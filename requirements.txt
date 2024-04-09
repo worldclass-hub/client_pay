@@ -4,7 +4,7 @@ cachetools==5.3.3
 certifi==2024.2.2
 charset-normalizer==3.3.2
 crispy-bootstrap5==2023.10
-Django==4.2.9
+Django==4.2.10
 django-bootstrap-v5==1.0.11
 django-crispy-forms==2.1
 django-gmailapi-backend==0.3.2
@@ -30,7 +30,7 @@ phonenumbers==8.13.30
 Pillow==9.1.0
 proto-plus==1.23.0
 protobuf==4.25.3
-psycopg2-binary==2.9.6
+psycopg2-binary==2.9.9
 pyasn1==0.6.0
 pyasn1_modules==0.4.0
 PyMySQL==1.1.0
