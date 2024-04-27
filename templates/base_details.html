@@ -360,7 +360,7 @@ body, html {
   <a onclick="closeSidebar()" class="w3-bar-item w3-button w3-large w3-padding-" ><i class="fa-solid fa-circle-user"></i> MY ACCOUNT </a>
 
   {% if user.is_superuser %}
-  <a href="{% url 'admin:index' %}" onclick="closeSidebar()" class="w3-bar-item w3-button" style="margin-left: 20px;"><i class="fa-solid fa-landmark fa-fade" style="color: #74C0FC;"></i> Dashboard</a>
+  <a href="{% url 'admin:index' %}" onclick="closeSidebar()" class="w3-bar-item w3-button" style="margin-left: 20px;"><i class="fa-solid fa-landmark fa-fade" style="color: #74C0FC;"></i> Admin Dashboard</a>
   {%endif%}
   <a href="#about" onclick="closeSidebar()" class="w3-bar-item w3-button" style="margin-left: 20px;"><i class="fa-solid fa-landmark fa-fade" style="color: #74C0FC;"></i> Dashboard</a>
   <a href="{% url 'all_transactions' %}" onclick="closeSidebar()" class="w3-bar-item w3-button" style="margin-left: 20px;"><i class="fa-solid fa-clipboard-check fa-fade" style="color: #74C0FC;"></i> Transition Logs </a>
