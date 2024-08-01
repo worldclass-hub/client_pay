@@ -113,7 +113,7 @@
 
 
 
- <div id="transactions-containering" style="margin-top: 140px;">
+ <div id="transactions-containering" style="margin-top: 130px;">
     {% for transaction in transactions %}
    <div class="list-group w3-hide-medium w3-hide-large">
        <a href="{% url 'transaction_detail' transaction.pk %}" class="list-group-item list-group-item-action " aria-current="true">
@@ -130,9 +130,8 @@
 </div> 
 
 
-
     
-  <div class="list w3-hide-small" style="position: fixed; top: 8%; left: 0; right: 0; overflow-y: scroll; z-index: 100; background-color: #E0E5E5	
+  <div class="list w3-hide-small" style="position: fixed; top: 6%; left: 0; right: 0; overflow-y: scroll; z-index: 100; background-color:  #E0E5E5	
   !important; padding: 0.5rem;">
    <a href="#" style="text-decoration: none; color: inherit; display: block; padding: 0.5rem 1rem;">
        <h5 style="margin: 0;"></h5>
@@ -143,7 +142,7 @@
 
 
 
-  <div class="list w3-hide-small" style="position: fixed; top: 12%; left: 0; right: 0; overflow-y: scroll; z-index: 100; background-color: #F5F5F5 !important; border-bottom: 1px solid #C0C0C0	;">
+  <div class="list w3-hide-small" style="position: fixed; top: 8%; left: 0; right: 0; overflow-y: scroll; z-index: 100; background-color: #F5F5F5 !important; border-bottom: 1px solid #C0C0C0	;">
     <a href="#" style="text-decoration: none; color: inherit; display: block; padding: 0.5rem 3rem;">
       <h5 style="margin: 0; font-family: Helvetica; margin-left: -13px; font-weight: 900;" onclick="showSweetAlertModal()">Menu <i class="fas fa-caret-down"></i></h5>
       <div style="display: inline-block; margin-left: -12px; margin-top: 4px;">
@@ -156,7 +155,7 @@
 
   
 
-  <div id="transactions-container" style="margin-top: 150px;">
+  <div id="transactions-container" style="margin-top: -5px;">
     {% for transaction in transactions %}
       <div class="list-group w3-hide-small">
         <a href="{% url 'transaction_detail' transaction.pk %}" class="list-group-item list-group-item-action" aria-current="true">

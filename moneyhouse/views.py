@@ -16,10 +16,8 @@ from django.db.models import Sum
 from django.http import HttpResponseRedirect
 
 import re
-from django.shortcuts import render
 from .models import MessageModel
 from datetime import datetime
-from django.shortcuts import render
 from .models import Transaction
 
 from django.shortcuts import render, redirect
@@ -31,7 +29,6 @@ from django.http import HttpResponse
 
 
 # views.py
-from django.shortcuts import render
 from django.core.mail import send_mail
 from django.conf import settings
 from .forms import ContactForm, PaymentForm
