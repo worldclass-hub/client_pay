@@ -1,6 +1,8 @@
 
 {% extends 'base_details.html' %}
 {% load static %}
+{% load humanize %}
+
 {% block content  %}
 <style>
   .card-container {
@@ -1434,7 +1436,10 @@ video {
           <i class="fa-solid fa-eye" id="toggleIcon" onclick="toggleBalance()"></i></p>
       </div>
     <div class="contenting">
-      <p class="blot" id="balance" style="margin-left: ; margin-top: -12px;" data-amount="1,591,980.00" data-hidden="false">＄1,591,980.00 </p>
+
+      <p class="blot" id="balance" style="margin-left: ; margin-top: -12px;" data-amount="1,591,980.00" data-hidden="false">＄{{ balance.amount|intcomma }}</p>
+      
+
     </div> 
   </div>
   
@@ -1445,7 +1450,8 @@ video {
         <p class="forgot-passwordmon" style="margin-left: -60px"><i class="fas fa-shield-alt"></i> Available Balance <i class="fa-solid fa-eye" id="toggleIcon1" onclick="toggleBalance1()"></i> </p>
     </div>
     <div class="contenting1">
-        <p id="balance1" data-amount="1,591,980.00" data-hidden="false" style="margin-left: -61px; margin-top: -3px;">＄1,591,980.00 </p>
+        <p id="balance1" data-amount="1,591,980.00" data-hidden="false" style="margin-left: -61px; margin-top: -3px;">＄{{ balance.amount|intcomma }} </p>
+
     </div>
 </div>
 
@@ -1459,7 +1465,8 @@ video {
       <p class="forgot-passwordport" style="margin-left: -69px"><i class="fas fa-shield-alt"></i> Available Balance <i class="fa-solid fa-eye" id="toggleIcon2" onclick="toggleBalance2()"></i> </p>
   </div>
   <div class="contenting1">
-      <p id="balance2" data-amount="1,591,980.00" data-hidden="false" style="margin-left: -63px; margin-top: -18px;">＄1,591,980.00 </p>
+      <p id="balance2" data-amount="1,591,980.00" data-hidden="false" style="margin-left: -63px; margin-top: -18px;">＄{{ balance.amount|intcomma }} </p>
+
   </div>
 </div>
 
@@ -1533,7 +1540,7 @@ video {
           <p class="forgot-passwordpip" style="margin-left: -60px"><i class="fa-solid fa-chart-simple fa-2xl"></i> </p>        
         </div>
         <div class="content3">
-          <p id="balance3" data-amount="1,591,980.00" data-hidden="false" style="margin-left: -58px; margin-top: -18px;">＄1,591,980.00 </p>
+          <p id="balance3" data-amount="1,591,980.00" data-hidden="false" style="margin-left: -58px; margin-top: -18px;">＄{{ balance.amount1|intcomma }}</p>
           <p class="forgot-passpop" style="">Ledger Balance <i class="fa-solid fa-eye" id="toggleIcon3" onclick="toggleBalance3()"></i></p>
 
         </div>
@@ -1550,89 +1557,6 @@ video {
   </div>
 </div>
 
-
-
-<div class="w3-hide- w3-hide-large w3-hide-medium custom-card6">
-  <div class="video-container">
-      <video autoplay muted loop id="myVideo">
-          <source src="{% static 'video/Water drops and black background video.mp4' %}" type="video/mp4">
-          Your browser does not support HTML5 video.
-      </video>
-  </div>
-  <div class="content-container">
-      <div class="image-container">
-          <img src="https://i.postimg.cc/g0xN3NVG/Whats-App-Image-2024-03-07-at-5-22-16-PM.jpg" alt="Image" class="card-image">
-      </div>
-      <div class="text-container">
-          <div class="header6">
-            <h2 style="font-family: Georgia;font-size: 15px; ">Your Account Number is</h2>
-            <h2 style="font-family: verdana;font-size: 15px; ;">369663359316</h2>
-          </div>
-          <div class="content6">
-              <p style="margin-left: 23px; font-family: Calibri;">You last logged into the banking platform
-                on:</p>     
-                <p  style="font-size:12px; margin-left: 23px; margin-top: -12px " id="date"></p>
-          </div>
-      </div>
-  </div>
-</div>
-
-    
-
-  
-<div class="w3-hide- w3-hide-small w3-hide-large custom-card100">
-  <div class="video-container">
-    <video autoplay muted loop id="myVideo">
-      <source src="{% static 'video/Video Water Background.mp4' %}" type="video/mp4">
-      Your browser does not support HTML5 video.
-  </video>
-  </div>
-  <div class="content-container100">
-      <div class="image-container100">
-          <img src="https://i.postimg.cc/g0xN3NVG/Whats-App-Image-2024-03-07-at-5-22-16-PM.jpg" alt="Image" class="card-imageing">
-      </div>
-      <div class="text-container100">
-          <div class="headering">
-            <h2 style="font-family: Georgia;font-size: 22px; ">Your Account Number is</h2>
-            <h2 style="font-family: verdana;font-size: 20px; ;">369663359316</h2>
-          </div>
-          <div class="contenting">
-              <p style="margin-left: 23px; font-family: Calibri; font-size: 17px;">You last logged into the banking platform
-                on:</p>     
-                <p  style="font-size:12px; margin-left: 23px; margin-top: -12px; font-size: 17px;" id="date2"></p>
-          </div>
-      </div>
-  </div>
-</div>
-
-    
-
-
-  
-<div class="w3-hide- w3-hide-small w3-hide-medium custom-card200">
-  <div class="video-container">
-    <video autoplay muted loop id="myVideo">
-      <source src="{% static 'video/y2mate.com - Water Background loop_480p.mp4' %}" type="video/mp4">
-      Your browser does not support HTML5 video.
-  </video>
-  </div>
-  <div class="content-container200">
-      <div class="image-container200">
-          <img height="2px" src="https://i.postimg.cc/g0xN3NVG/Whats-App-Image-2024-03-07-at-5-22-16-PM.jpg" alt="Image" class="card-imageingon">
-      </div>
-      <div class="text-container200">
-          <div class="headeringon">
-            <h2 style="font-family: Georgia;font-size: 30px; ">Your Account Number is</h2>
-            <h2 style="font-family: verdana;font-size: 27px; ">369663359316</h2>
-          </div>
-          <div class="contentingon">
-              <p style="margin-left: 23px; font-family: Calibri; font-size: 27px; ">You last logged into the banking platform
-                on:</p>     
-                <p  style="font-size:12px; margin-left: 23px; margin-top: -12px; font-size: 27px;   " id="date3"></p>
-          </div>
-      </div>
-  </div>
-</div>
 <img class="w3-hide-medium w3-hide-large flipper" src='https://i.postimg.cc/fyYf4bXM/master-card-modified-imageonline-co-6351255.jpg' style="height: 250px; margin-top: -2px; border-radius: 12px; border: 2px solid #F0FFFF;">
 
 

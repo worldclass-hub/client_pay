@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from .models import CustomUser, MessageBox, Transaction
+from .models import CustomUser, MessageBox, Transaction, Balance
 from .models import MyModel, MyTransfer
 from .models import MessageModel
 
@@ -62,4 +62,5 @@ class MessageModelAdmin(admin.ModelAdmin):
 admin.site.register(Transaction, TransactionAdmin)
 admin.site.register(CustomUser, UserAdmin)
 
+admin.site.register(Balance)
 

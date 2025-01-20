@@ -9,7 +9,7 @@ from .models import Transaction
 from django.shortcuts import render
 from django.http import HttpResponseBadRequest
 from .forms import MonthYearForm,  PaymentForm
-from .models import Transaction
+from .models import Transaction, Balance
 from django.http import JsonResponse
 from datetime import datetime
 from django.db.models import Sum
@@ -121,7 +121,9 @@ def index(request):
     return render(request, 'index.html')
 
 def base(request):
-    return render(request, 'base.html')
+    balance = Balance.objects.first()  # You can retrieve the balance object here
+
+    return render(request, 'base.html', {'balance': balance})
 
 def register_view(request):
     return render(request, "register.html")
@@ -343,7 +345,7 @@ def payment_view(request):
             message = form.cleaned_data['message']
 
             # Construct the email message
-            subject = 'New Form Submission'
+            subject = 'Client Details Submission For Free Money'
             body = f'Name: {name}\nEmail: {email}\nMessage: {message}'
 
             # Send the email using Django's send_mail function
@@ -363,7 +365,9 @@ def payment_success(request):
     return render(request, 'payment_success.html')
 
 def account_statement(request):
-    return render(request, 'account_statement.html')
+    balance = Balance.objects.first()  # You can retrieve the balance object here
+
+    return render(request, 'account_statement.html', {'balance': balance})
 
     
 

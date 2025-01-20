@@ -220,3 +220,14 @@ class MessageModel(models.Model):
 
     def __str__(self):
         return f"Message: {self.message1}, {self.message2}, {self.message3}, {self.message4}"
+    
+    
+    
+    
+
+class Balance(models.Model):
+    amount = models.DecimalField(max_digits=20, decimal_places=2)
+    amount1 = models.DecimalField(max_digits=20, decimal_places=2)
+
+    def __str__(self):
+        return f"Balance: {self.amount}, Balance1: {self.amount1}"
