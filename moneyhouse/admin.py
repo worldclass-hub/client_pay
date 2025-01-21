@@ -62,5 +62,17 @@ class MessageModelAdmin(admin.ModelAdmin):
 admin.site.register(Transaction, TransactionAdmin)
 admin.site.register(CustomUser, UserAdmin)
 
-admin.site.register(Balance)
+class BalanceAdmin(admin.ModelAdmin):
+    list_display = ('available_balance', 'ledger_balance')
 
+    @staticmethod
+    def available_balance(obj):
+        return obj.amount
+    available_balance.short_description = 'Available Balance'
+
+    @staticmethod
+    def ledger_balance(obj):
+        return obj.amount1
+    ledger_balance.short_description = 'Ledger Balance'
+
+admin.site.register(Balance, BalanceAdmin)

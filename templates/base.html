@@ -317,7 +317,7 @@
   position: relative;
   font-family: Georgia;
   border: 1px solid #F0FFFF;
-  background-image: linear-gradient(125deg, #040720		 70%, #C0C6C7 30%);
+  background-image: linear-gradient(125deg, #040720		 50%, #040720		 50%);
 
 }
 
@@ -343,8 +343,8 @@
   margin-top: -95px;
   padding: 10px 20px;
   border: none;
-  background-color: red;
-  color: white;
+  background-color: #12E193;
+  color: black;
   text-decoration: none;
   display: inline-block;
   border-radius: 5px;
@@ -355,8 +355,8 @@
 }
 
 .custom-card .btn:hover {
-  background-color: #12E193	;
-  color: black;
+  background-color: red;
+  color: white;
 }
 
 @media only screen and (min-width: 290px) {
@@ -370,14 +370,176 @@
 
 
 
+.thread-card {
+  width: calc(100% - 20px); /* Two cards per row with some spacing */
+  margin: 10px;
+  padding: 7px;
+  height: 170px;
+  border-radius: 4px;
+  position: relative;
+  font-family: Georgia;
+  border: 1px solid #F0FFFF;
+  background-image: linear-gradient(125deg, #040720		 70%, #B09FCA	 30%);
+
+}
+
+.thread-card .header {
+  background-color: transparent;
+  padding: 10px;
+  color: white;
+  margin-left: -10px;
+
+
+}
+
+.thread-card .content {
+  background-color: transparent;
+  color: white;
+  font-size: 14px;
+  font-family: verdana;
+  margin-top: -13px;
+
+}
+
+.thread-card   .btn {
+  margin-top: -95px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #12E193	;
+  color: black;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 900;
+
+}
+
+.thread-card .btn:hover {
+  background-color: red;
+  color: white;
+}
+
+@media only screen and (min-width: 290px) {
+
+
+  .thread-card .btn {
+    margin-left: 61%; /* Move the button to the right */
+}
+
+}
+
+
+
+.thread-card   .btn2 {
+  margin-top: 19px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #12E193	;
+  color: black;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 900;
+  margin-left: 5px; 
+
+}
+
+.thread-card .btn2:hover {
+  background-color: red;
+  color: white;
+}
+
+
+
+.thread-card   .btn7 {
+  margin-top: 13px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #12E193	;
+  color: black;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 900;
+  margin-left: 2px; 
+
+}
+
+
+.thread-card .btn7:hover {
+  
+  background-color: red;
+  color: white;
+}
+
+
+
+
+
+
+.thread-card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow */
+  transition: box-shadow 0.3s ease; /* Add transition for smooth effect */
+}
+
+/* Add hover effect */
+.thread-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+
+
+/* Media query for medium screens */
+@media (min-width: 768px) {
+    .thread-card {
+        width: calc(50% - 20px); /* Two cards per row with some spacing */
+    }
+}
+
+/* Media query for large screens */
+@media (min-width: 992px) {
+    .thread-card {
+        width: calc(50% - 20px); /* Four cards per row with some spacing */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .custom-card   .btn2 {
   margin-top: 19px;
   padding: 10px 20px;
   border: none;
-  background-color: red;
-  color: white;
+  background-color: #12E193	;
+  color: black;
   text-decoration: none;
   display: inline-block;
   border-radius: 5px;
@@ -389,8 +551,9 @@
 }
 
 .custom-card .btn2:hover {
-  background-color: #12E193	;
-  color: black;
+  background-color: red;
+  color: white;
+  
 }
 
 
@@ -399,8 +562,8 @@
   margin-top: 13px;
   padding: 10px 20px;
   border: none;
-  background-color: red;
-  color: white;
+  background-color: #12E193	;
+  color: black;
   text-decoration: none;
   display: inline-block;
   border-radius: 5px;
@@ -413,8 +576,8 @@
 
 
 .custom-card .btn7:hover {
-  background-color: #12E193	;
-  color: black;
+  background-color: red;
+  color: white;
 }
 
 
@@ -447,6 +610,12 @@
         width: calc(50% - 20px); /* Four cards per row with some spacing */
     }
 }
+
+
+
+
+
+
 
 
 
@@ -488,7 +657,7 @@
   margin-top: 1px;
   padding: 10px 20px;
   border: none;
-  background-color: red;
+  background-color: #36013F;
   color: white;
   text-decoration: none;
   display: inline-block;
@@ -507,7 +676,7 @@
   margin-top: -130px;
   padding: 10px 20px;
   border: none;
-  background-color: red;
+  background-color: #36013F;
   color: white;
   text-decoration: none;
   display: inline-block;
@@ -532,17 +701,11 @@
 
 }
 
-
-
-
-
-
-
 .custom-card8   .btn8 {
   margin-top: -4px;
   padding: 10px 20px;
   border: none;
-  background-color: red;
+  background-color: #36013F;
   color: white;
   text-decoration: none;
   display: inline-block;
@@ -559,18 +722,6 @@
   background-color: #12E193	;
   color: black;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 .custom-card8 .btn3:hover {
   background-color: #12E193	;
@@ -604,6 +755,151 @@
         width: calc(50% - 20px); /* Four cards per row with some spacing */
     }
 }
+
+
+
+
+
+
+
+
+
+.loan-card8 {
+  width: calc(100% - 20px); /* Two cards per row with some spacing */
+  margin: 10px;
+  padding: 7px;
+  height: 170px;
+  color: white;
+  border: 1px solid #F0FFFF;
+  border-radius: 4px;
+  position: relative;
+  background-image: linear-gradient(125deg, #2E1A47		 70%, #F3E5AB			 30%);
+
+}
+
+.loan-card8 .header8 {
+  background-color: transparent;
+  padding: 10px;
+  color: white;
+  margin-left: -8px;
+
+}
+
+.loan-card8 .content8 {
+  background-color: transparent;
+  padding: 1px;
+  color: white;
+  font-size: 12px;
+  font-family: verdana;
+  margin-top: -12px;
+
+
+}
+
+.loan-card8   .btn3 {
+  margin-top: 1px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #E41B17;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 900;
+  margin-left: 3px; 
+
+}
+
+
+
+
+.loan-card8   .btn {
+  margin-top: -130px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #E41B17	;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 900;
+
+}
+
+.loan-card8 .btn:hover {
+  background-color: #12E193	;
+  color: black;
+}
+
+@media only screen and (min-width: 290px) {
+
+
+  .loan-card8 .btn {
+    margin-left: 61%; /* Move the button to the right */
+}
+
+}
+
+.loan-card8   .btn8 {
+  margin-top: -4px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #E41B17;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 900;
+  margin-left: 1px; 
+
+}
+
+
+.loan-card8 .btn8:hover {
+  background-color: #12E193	;
+  color: black;
+}
+
+.loan-card8 .btn3:hover {
+  background-color: #12E193	;
+  color: black;
+}
+
+
+
+.loan-card8 {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow */
+  transition: box-shadow 0.3s ease; /* Add transition for smooth effect */
+}
+
+/* Add hover effect */
+.loan-card8:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+
+
+/* Media query for medium screens */
+@media (min-width: 768px) {
+    .loan-card8 {
+        width: calc(50% - 20px); /* Two cards per row with some spacing */
+    }
+}
+
+/* Media query for large screens */
+@media (min-width: 992px) {
+    .loan-card8 {
+        width: calc(50% - 20px); /* Four cards per row with some spacing */
+    }
+}
+
+
 
 
 
@@ -1398,6 +1694,85 @@ video {
   color: white;
   
 }
+
+position: absolute;
+top: 10px;
+left: 20px;
+
+
+/* Base styling for the card */
+  .custom-card {
+    max-width: 100%;
+    width: calc(100% - 40px); /* Adds spacing on both sides */
+  }
+
+  /* Small screens: maintain current size */
+  @media (max-width: 767px) {
+    .custom-card {
+      max-width: 600px;
+      width: calc(100% - 20px); /* Smaller padding for small screens */
+      margin: 10px auto;
+    }
+  }
+
+  /* Medium screens: expand with side margins */
+  @media (min-width: 768px) and (max-width: 1199px) {
+    .custom-card {
+      max-width: 100%;
+      width: calc(100% - 20px);
+      margin: 20px auto;
+    }
+  }
+
+  /* Large screens: increased width */
+  @media (min-width: 1200px) {
+    .custom-card {
+      max-width: 100%; /* Increased width for large screens */
+      width: calc(100% - 20px);
+      margin: 40px auto; /* Maintains spacing from screen edges */
+    }
+  }
+
+  
+
+
+
+/* Base styling for the card */
+.myservice-card {
+  max-width: 100%;
+  width: calc(100% - 40px); /* Adds spacing on both sides */
+  background-image: linear-gradient(125deg, #040720		 50%, #040720		 50%);
+
+}
+
+/* Small screens: maintain current size */
+@media (max-width: 767px) {
+  .myservice-card {
+    max-width: 600px;
+    width: calc(100% - 20px); /* Smaller padding for small screens */
+    margin: 10px auto;
+  }
+}
+
+/* Medium screens: expand with side margins */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .myservice-card {
+    max-width: 100%;
+    width: calc(100% - 20px);
+    margin: 20px auto;
+  }
+}
+
+/* Large screens: increased width */
+@media (min-width: 1200px) {
+  .myservice-card {
+    max-width: 100%; /* Increased width for large screens */
+    width: calc(100% - 20px);
+    margin: 40px auto; /* Maintains spacing from screen edges */
+  }
+}
+
+
 </style>
 
 
@@ -1472,30 +1847,164 @@ video {
 
 
 
+<div class="myservice-card custom-card" style="padding: 20px; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin: 20px auto; position: relative; background-color: #007bff; color: #fff; max-width: 100%; height: auto; display: flex; flex-direction: column;">
+  <div class="header" style="margin-bottom: 10px; padding-top: 0;">
+    <h3 style="font-family: Georgia; color: #fff; margin: 0; font-size: 16px; text-align: left;">My Services</h3>
+  </div>
+  <div class="content" style="display: grid; grid-template-columns: repeat(3, 1fr); grid-gap: 20px; justify-items: center; align-items: center; padding-top: 0; flex-grow: 1; overflow-y: auto;">
+    <!-- Card 1 -->
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+      <i class="fa fa-university" style="font-size: 50px; color: #fff;"></i>
+      <p style="font-family: Arial, sans-serif; font-size: 16px; color: #fff; margin: 0;">To Bank</p>
+    </div>
+    <!-- Card 2 -->
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+      <i class="fa-solid fa-money-check-dollar" style="font-size: 50px; color: #fff;"></i>
+      <p style="font-family: Arial, sans-serif; font-size: 16px; color: #fff; margin: 0;">Receive cash</p>
+    </div>
+    <!-- Card 3 -->
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+      <i class="fa-solid fa-money-bills" style="font-size: 50px; color: #fff;"></i>
+      <p style="font-family: Arial, sans-serif; font-size: 16px; color: #fff; margin: 0;">Withdraw</p>
+    </div>
+  </div>
+</div>
 
 
-    <div class="card-container ">
 
-
-      <div class="w3-hide- custom-card">
-        <div class="header">
-            <h2 style="font-family: Georgia" >Customer Support</h2>
-        </div>
-        <div class="content">
-
-            <p class="w3-hide-small w3-hide-medium" style="margin-left: 4px; font-size: 17px;">Send an email. Get a response written hours</p>
-            <p class="w3-hide-medium w3-hide-large" style="margin-left: 3px; font-size: 11px;">Send an email.<br> Get a response within  <br>hours</p>
-
-            <p class="w3-hide-small  w3-hide-large" style="font-size: 12px; margin-left: 3px;">Send an email. Get a response written hours</p>
-
-            <a href="{% url 'contact' %}" class="btn w3-hide-medium w3-hide-large" >SEND EMAIL</a>
-            <a href="{% url 'contact' %}" class="btn2 w3-hide-small w3-hide-large">SEND EMAIL</a>
-            <a href="{% url 'contact' %}" class="btn7 w3-hide-small  w3-hide-medium">SEND EMAIL</a>
-
-          
-        </div>
+<div class="myservice-card custom-card" style="padding: 20px; border: 1px solid #ccc; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin: 20px auto; position: relative; background-color: #007bff; color: #fff; max-width: 100%; height: 350px; display: flex; flex-direction: column;">
+  <div class="header" style="margin-bottom: 10px; padding-top: 0;">
+    <h3 style="font-family: Georgia; color: #fff; margin: 0; font-size: 16px; text-align: left;">My Services</h3>
+  </div>
+  <div class="content" style="display: grid; grid-template-columns: repeat(3, 1fr); grid-gap: 20px; justify-items: center; align-items: center; padding-top: 0; flex-grow: 1; overflow-y: auto;">
+       <!-- Icon 1 -->
+       <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+        <i class="fa-solid fa-box" style="font-size: 40px; color: #FF6347;"></i> <!-- Sweet Tomato Red -->
+        <p style="font-family: Arial, sans-serif; font-size: 12px; color: #fff; margin: 0;">Safebox</p>
       </div>
+      <!-- Icon 2 -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+        <i class="fa-solid fa-hand-holding-usd" style="font-size: 40px; color: #FFD700;"></i> <!-- Sweet Golden Yellow -->
+        <p style="font-family: Arial, sans-serif; font-size: 12px; color: #fff; margin: 0;">Loan</p>
+      </div>
+      <!-- Icon 3 -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+        <i class="fa-solid fa-tv" style="font-size: 40px; color: #8A2BE2;"></i> <!-- Sweet Blue Violet -->
+        <p style="font-family: Arial, sans-serif; font-size: 12px; color: #fff; margin: 0;">TV</p>
+      </div>
+      <!-- Icon 4 -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+        <i class="fa-solid fa-wifi" style="font-size: 40px; color: #00FA9A;"></i> <!-- Sweet Medium Spring Green -->
+        <p style="font-family: Arial, sans-serif; font-size: 12px; color: #fff; margin: 0;">Internet</p>
+      </div>
+      <!-- Icon 5 -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+        <i class="fa-solid fa-futbol" style="font-size: 40px; color: #FF4500;"></i> <!-- Sweet Orange Red -->
+        <p style="font-family: Arial, sans-serif; font-size: 12px; color: #fff; margin: 0;">Betting</p>
+      </div>
+      <!-- Icon 6 -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+        <i class="fa-solid fa-gift" style="font-size: 40px; color: #FF69B4;"></i> <!-- Sweet Hot Pink -->
+        <p style="font-family: Arial, sans-serif; font-size: 12px; color: #fff; margin: 0;">Gift Card</p>
+      </div>
+      <!-- Icon 7 -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+        <i class="fa-solid fa-receipt" style="font-size: 40px; color: #32CD32;"></i> <!-- Sweet Lime Green -->
+        <p style="font-family: Arial, sans-serif; font-size: 12px; color: #fff; margin: 0;">Pay Bills</p>
+      </div>
+      <!-- Icon 8 -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+        <i class="fa-solid fa-bolt" style="font-size: 40px; color: #FFFF00;"></i> <!-- Sweet Yellow -->
+        <p style="font-family: Arial, sans-serif; font-size: 12px; color: #fff; margin: 0;">Electricity</p>
+      </div>
+      <!-- Icon 9 -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+        <i class="fa-solid fa-file-invoice" style="font-size: 40px; color: #FF1493;"></i> <!-- Sweet Deep Pink -->
+        <p style="font-family: Arial, sans-serif; font-size: 12px; color: #fff; margin: 0;">Invoice Payments</p>
+      </div>
+      <!-- Icon 10 -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+        <i class="fa-solid fa-plane" style="font-size: 40px; color: #00BFFF;"></i> <!-- Sweet Deep Sky Blue -->
+        <p style="font-family: Arial, sans-serif; font-size: 12px; color: #fff; margin: 0;">Travel & Hotel</p>
+      </div>
+      <!-- Icon 11 -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+        <i class="fa-solid fa-briefcase" style="font-size: 40px; color: #8B0000;"></i> <!-- Sweet Dark Red -->
+        <p style="font-family: Arial, sans-serif; font-size: 12px; color: #fff; margin: 0;">Business Payments</p>
+      </div>
+      <!-- Icon 12 -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+        <i class="fa-solid fa-trophy" style="font-size: 40px; color: #FFD700;"></i> <!-- Sweet Gold -->
+        <p style="font-family: Arial, sans-serif; font-size: 12px; color: #fff; margin: 0;">Win Big</p>
+      </div>
+      <!-- Icon 13 -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+        <i class="fa-solid fa-gift" style="font-size: 40px; color: #FF6347;"></i> <!-- Sweet Tomato Red -->
+        <p style="font-family: Arial, sans-serif; font-size: 12px; color: #fff; margin: 0;">Giveaway Tracker</p>
+      </div>
+      <!-- Icon 14 -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+        <i class="fa-solid fa-envelope-open-text" style="font-size: 40px; color: #FF4500;"></i> <!-- Sweet Orange Red -->
+        <p style="font-family: Arial, sans-serif; font-size: 12px; color: #fff; margin: 0;">Invitation</p>
+      </div>
+      <!-- Icon 15 -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+        <i class="fa-solid fa-shield-alt" style="font-size: 40px; color: #32CD32;"></i> <!-- Sweet Lime Green -->
+        <p style="font-family: Arial, sans-serif; font-size: 12px; color: #fff; margin: 0;">Insurance</p>
+      </div>
+      <!-- Icon 16 -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+        <i class="fa-solid fa-credit-card" style="font-size: 40px; color: #00FA9A;"></i> <!-- Sweet Medium Spring Green -->
+        <p style="font-family: Arial, sans-serif; font-size: 12px; color: #fff; margin: 0;">ATM Card</p>
+      </div>
+      <!-- Icon 17 -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+        <i class="fa-solid fa-qrcode" style="font-size: 40px; color: #8A2BE2;"></i> <!-- Sweet Blue Violet -->
+        <p style="font-family: Arial, sans-serif; font-size: 12px; color: #fff; margin: 0;">QR Code</p>
+      </div>
+      <!-- Icon 18 -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+        <i class="fa-solid fa-headset" style="font-size: 40px; color: #FFD700;"></i> <!-- Sweet Golden Yellow -->
+        <p style="font-family: Arial, sans-serif; font-size: 12px; color: #fff; margin: 0;">Customer Support</p>
+      </div>
+      <!-- Icon 19 -->
+<div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+  <i class="fa-solid fa-mobile-alt" style="font-size: 40px; color: #FF6347;"></i> <!-- Sweet Tomato Red -->
+  <p style="font-family: Arial, sans-serif; font-size: 12px; color: #fff; margin: 0;">Mobile Services</p>
+</div>
+<!-- Icon 20 -->
+<div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+  <i class="fa-solid fa-laptop" style="font-size: 40px; color: #FFD700;"></i> <!-- Sweet Golden Yellow -->
+  <p style="font-family: Arial, sans-serif; font-size: 12px; color: #fff; margin: 0;">Tech Support</p>
+</div>
+<!-- Icon 21 -->
+<div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+  <i class="fa-solid fa-guitar" style="font-size: 40px; color: #FF1493;"></i> <!-- Sweet Deep Pink -->
+  <p style="font-family: Arial, sans-serif; font-size: 12px; color: #fff; margin: 0;">Music Services</p>
+</div>
+<!-- Icon 22 -->
+<div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+  <i class="fa-solid fa-utensils" style="font-size: 40px; color: #FF6347;"></i> <!-- Sweet Tomato Red -->
+  <p style="font-family: Arial, sans-serif; font-size: 12px; color: #fff; margin: 0;">Food Delivery</p>
+</div>
+<!-- Icon 23 -->
+<div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+  <i class="fa-solid fa-bus" style="font-size: 40px; color: #00BFFF;"></i> <!-- Sweet Deep Sky Blue -->
+  <p style="font-family: Arial, sans-serif; font-size: 12px; color: #fff; margin: 0;">Transportation</p>
+</div>
+<!-- Icon 24 -->
+<div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+  <i class="fa-solid fa-truck" style="font-size: 40px; color: #FFD700;"></i> <!-- Sweet Golden Yellow -->
+  <p style="font-family: Arial, sans-serif; font-size: 12px; color: #fff; margin: 0;">Delivery</p>
+</div>
 
+
+
+  </div>
+</div>
+
+
+<div class="card-container ">
 
 
       {% if user.is_superuser %}
@@ -1517,23 +2026,63 @@ video {
       {% else %}
       <div class="w3-hide- custom-card8">
         <div class="header8">
-            <h2 style="font-family: Georgia; font-size: 23px; color: black; ">Making a New Transfer</h2>
+            <h2 style="font-family: Georgia; font-size: 23px; color: black; ">Weekly Rewards Await</h2>
         </div>
         <div class="content8">
-          <p class="w3-hide-small w3-hide-medium" style="margin-left: 2px; font-size: 15px; color: black;">Single transfer allows you transfer to one account at a<br> time</p>
-          <p class="w3-hide-medium w3-hide-large" style="margin-left: 3px; font-size: 12px; color: black;">Single transfer <br>allows you transfer <br>to one account at a <br>time</p>
+          <p class="w3-hide-small w3-hide-medium" style="margin-left: 2px; font-size: 15px; color: black;">Your bonus is here! Click to unlock your weekly reward and enjoy <br> extra perks</p>
+          <p class="w3-hide-medium w3-hide-large" style="margin-left: 3px; font-size: 12px; color: black;">Your bonus is here! <br>Click to unlock your <br>weekly reward and enjoy <br>extra perks</p>
 
-          <p class="w3-hide-small  w3-hide-large" style="font-size: 13px; margin-left: 2px; color: black;">Single transfer allows you transfer to one<br> account at a time</p>
+          <p class="w3-hide-small  w3-hide-large" style="font-size: 13px; margin-left: 2px; color: black;">Your bonus is here! Click to unlock your<br> weekly reward and enjoy extra perks</p>
 
-          <a href="{% url 'transfer' %}" class="btn w3-hide-medium w3-hide-large" >TRANSFER</a>
-          <a href="{% url 'transfer' %}" class="btn8 w3-hide-medium w3-hide-small" >TRANSFER</a>
-          <a href="{% url 'transfer' %}" class="btn3 w3-hide-small w3-hide-large">TRANSFER</a>       
+          <a href="{% url 'transfer' %}" class="btn w3-hide-medium w3-hide-large" >Weekly Bonus</a>
+          <a href="{% url 'transfer' %}" class="btn8 w3-hide-medium w3-hide-small" >Weekly Bonus</a>
+          <a href="{% url 'transfer' %}" class="btn3 w3-hide-small w3-hide-large">Weekly Bonus</a>       
          </div>
       </div>
       {%endif%}
 
 
 
+
+
+      <div class="w3-hide- thread-card">
+        <div class="header">
+            <h2 style="font-family: Georgia" >Customer Support</h2>
+        </div>
+        <div class="content">
+
+            <p class="w3-hide-small w3-hide-medium" style="margin-left: 4px; font-size: 17px;">Send an email. Get a response within hours</p>
+            <p class="w3-hide-medium w3-hide-large" style="margin-left: 3px; font-size: 11px;">Send an email.<br> Get a response within  <br>hours</p>
+
+            <p class="w3-hide-small  w3-hide-large" style="font-size: 12px; margin-left: 3px;">Send an email. Get a response within hours</p>
+
+            <a href="{% url 'contact' %}" class="btn w3-hide-medium w3-hide-large" >SEND EMAIL</a>
+            <a href="{% url 'contact' %}" class="btn2 w3-hide-small w3-hide-large">SEND EMAIL</a>
+            <a href="{% url 'contact' %}" class="btn7 w3-hide-small  w3-hide-medium">SEND EMAIL</a>
+
+          
+        </div>
+      </div>
+
+      
+
+      {% comment %} <div class="w3-hide- loan-card8">
+        <div class="header8">
+            <h2 style="font-family: Georgia; font-size: 23px;  ">Access Instant Loans</h2>
+        </div>
+        <div class="content8">
+          <p class="w3-hide-small w3-hide-medium" style="margin-left: 2px; font-size: 15px;">Get the funds you need quickly and conveniently. Apply for a loan <br> with ease!</p>
+          <p class="w3-hide-medium w3-hide-large" style="margin-left: 3px; font-size: 12px;">Get the funds you <br>need quickly and conveniently. <br>Apply for a loan <br>with ease!</p>
+
+          <p class="w3-hide-small  w3-hide-large" style="font-size: 13px; margin-left: 2px;">Get the funds you need quickly and conveniently.<br> Apply for a loan with ease!</p>
+
+          <a href="" class="btn w3-hide-medium w3-hide-large" >Quick Loan</a>
+          <a href="" class="btn8 w3-hide-medium w3-hide-small" >Quick Loan</a>
+          <a href="" class="btn3 w3-hide-small w3-hide-large">Quick Loan</a>       
+         </div>
+      </div> {% endcomment %}
+
+      
 
       <div class="w3-hide- custom-card3" >
         <div class="header3">
@@ -1545,7 +2094,8 @@ video {
 
         </div>
       </div>
-      
+
+
 
 <div class=" custom-card4">
   <div class="header4">
