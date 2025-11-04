@@ -1,0 +1,239 @@
+{% extends 'transaction_detailshouse.html' %}
+{% load custom_filters %}
+
+{% load static %}
+{% block content %}
+
+
+
+
+<style>
+
+    .fant {
+        text-align: right;
+        margin-top: -58px;
+      }
+      
+      
+      .fanting {
+        text-align: right;
+        margin-top: -43px;
+    }
+      
+
+.class{
+    text-align: right;
+    margin-top: -42px;
+}
+
+.dot {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 12px;
+    font-family: arial;
+    color: #000080;
+}
+
+#customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #customers td, #customers th {
+    border: 1px solid #2C3539;
+    padding: 8px;
+  }
+  
+  #customers tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #customers tr:hover {background-color: #E0E5E5; color: #040720;}
+  
+  #customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: ;
+    color: black;
+  }
+
+
+  .result {
+    font-size: ;
+    font-weight:400;
+    font-family: Helvetica; 
+    background-color: #DADBDD	;
+    font-size: 9px;
+
+  }
+
+
+  .result1 {
+    font-size: ;
+    background-color: #C0C0C0;
+    font-weight:bold; 
+    font-size: 10px;
+
+
+  } 
+
+
+  .result2 {
+    font-weight:bold; 
+    background-color: #DADBDD;
+    font-size: 10px;
+
+  }
+
+
+  table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    padding: 800px;
+    border-radius: 6px; /* Add a curved border to the table */
+    overflow: hidden; /* Hide the curved border that exceeds the table */
+    border: none; /* Remove the border around the table */
+    
+  }
+
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border: none; /* Remove the border around table cells */
+  }
+
+  tr {
+    
+    background-color: white !important; /* Remove background color for rows */
+  }
+
+  .w3-table {
+    border: none;
+    background-color: white !important;
+    border-bottom: 1px solid white; /* Set the bottom border of the table to white */
+
+
+  }
+
+.lab{
+color: #99A3A3;
+font-family: verdana;
+}
+
+
+.lab2{
+  color: #040720	;
+  font-family: verdana;
+  }
+
+
+  .status-pending {
+    color: #FFA500;
+}
+
+.status-successful {
+    color: #08A04B; /* Green color for Successful status */
+}
+
+
+.status-failed {
+    color: #9F000F; /* Green color for Successful status */
+}
+
+
+</style>
+
+<div class="list w3-hide-medium w3-hide-large" style="position: fixed; top: 5%; left: 0; right: 0; overflow-y: scroll; z-index: 100; background-color:	#E0E5E5	
+!important; padding: 0.5rem; ">
+ <a href="#" style="text-decoration: none; color: inherit; display: block; padding: 0.5rem 1rem;">
+     <h5 style="margin: 0;"></h5>
+ </a>
+</div>
+    
+<div class="list w3-hide-small" style="position: fixed; top: 8%; left: 0; right: 0; overflow-y: scroll; z-index: 100; background-color: #E0E5E5	
+!important; padding: 0.5rem;">
+ <a href="#" style="text-decoration: none; color: inherit; display: block; padding: 0.5rem 1rem;">
+     <h5 style="margin: 0;"></h5>
+ </a>
+</div>
+<br>
+<br>
+<br>
+<br>
+
+<div class="container">
+
+<div class="card mb-3">
+  <div class="card-body">
+    <h1 class="card-title" style="text-align: center; font-family: Helvetica; font-weight: bold;">{{ transaction.amount }}</h1>
+    <p class="card-text {{ transaction.get_status_class }}"  style="text-align: center; font-size: 20px; color: ;"><i class="fa-solid fa-circle-check {{ transaction.get_status_class }}" style="color:;"></i> {{ transaction.status }}</p>
+    <p class="card-text" style="font-family: verdana;"><small class="text-muted">Amount</small></p>
+    <p class="card-text " style="text-align: right; margin-top:-42px; font-family: Helvetica; font-weight: bold;"><small class="text-muted">{{ transaction.amount }}</small></p>
+  </div>
+</div>
+
+
+<table class="w3-table">
+  <tr>
+    <th colspan="3" style="font-size: 25px; font-family: Helvetica;">Transaction Details</th>
+  </tr>
+  <tr>
+    <td class="lab">Sender Name</td>
+    <td></td>
+    <td  colspan="2"class="lab2" >{{ transaction.Sender_Name }}</td>
+  </tr>
+  <tr>
+    <td class="lab">Sender Bank</td>
+    <td></td>
+    <td class="lab2" colspan="2" >{{ transaction.Sender_Bank }}</td>
+  </tr>
+  <tr>
+    <td class="lab">Sender Account</td>
+    <td></td>
+    <td class="lab2" colspan="2" >{{ transaction.Sender_Account }}</td>
+  </tr>
+  <tr>
+    <td class="lab">Transaction Type</td>
+    <td></td>
+    <td class="lab2" colspan="2" >{{ transaction.Transaction_Type }}</td>
+  </tr>
+  <tr >
+    <td class="lab">Transaction Number</td>
+    <td></td>
+    <td class="lab2" colspan="2" >{{ transaction.Transaction_Number }} <i class="fa-regular fa-copy" style="color: #0664ac;"></i></td>
+  </tr>
+  <tr>
+    <td class="lab">Credited to</td>
+    <td></td>
+    <td class="lab2" colspan="2" >{{ transaction.Credited_To }}<a href="{% url 'account_statement' %}" style="text-decoration: none;"> <i class="fa-solid fa-chevron-right" style="color: #083c96;"></i></a></td>
+  </tr>
+  <tr>
+    <td class="lab">Transaction Date</td>
+    <td></td>
+    <td class="lab2" colspan="2" >{{ transaction.date }} at {{ transaction.time }}</td>
+    
+  </tr>
+
+  <tr>
+    <td class="lab"></td>
+    <td></td>
+    <td class="lab2" colspan="2" ></td>
+    
+  </tr>
+</table>
+
+
+
+  
+<!-- ========================= SECTION CONTENT END// ========================= -->
+{% endblock  %}
+
+
+
+
+
+
+
+
+

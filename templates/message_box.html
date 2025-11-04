@@ -1,0 +1,76 @@
+{% extends 'message_detailshouse.html' %}
+{% load static %}
+{% block content  %}
+<style>
+
+    .fant {
+        text-align: right;
+        margin-top: -58px;
+      }
+      
+      
+      .fanting {
+        text-align: right;
+        margin-top: -43px;
+    }
+      
+
+.class{
+    text-align: right;
+    margin-top: -42px;
+}
+
+.dot {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 12px;
+    font-family: arial;
+    color: #29465B;
+}
+
+
+.picture {
+    height: 150px;
+}
+
+
+
+.picture2 {
+    height: 200px;
+}
+</style>
+<br>
+
+
+
+<div class="container" style="margin-top: 77px;">
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        {% for message in messages %}
+        <div class="col">
+            <div class="card">
+                <img src="{{ message.image.url }}" class="picture card-img-top w3-hide-medium w3-hide-large"  alt="Message Image">
+                <img src="{{ message.image.url }}" class="picture2 card-img-top w3-hide-small" alt="Message Image">
+
+                <div class="card-body">
+                    <h5 class="card-title" style="font-family: Georgia; font-weight: bold;">{{ message.heading }}</h5>
+                    <p class="card-text">{{ message.content|slice:":100" }}</p>
+                    <hr>
+                    <p class="card-text" style="margin-top: -10px; Georgia; font-weight: bold;"><small class="text-muted">{{ message.date }} {{ message.time }}</small></p>
+                    <p class="class"><small class="text-muted"><a class="dot" href="{% url 'message_detail' message.id %}">View All <i class="fa-solid fa-arrow-right"></i></a></small></p>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+{% endblock  %}
+
+
+

@@ -1,0 +1,1665 @@
+
+{% extends 'account_statement_details.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block content  %}
+<style>
+  .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+  }
+
+
+
+
+
+
+  .custom-card1 {
+    width: calc(100% - 20px); /* Two cards per row with some spacing */
+    margin: 10px;
+    padding: 70px;
+    height: 20px;
+    border-radius: 4px;
+    border: 1px solid #F0FFFF;
+    position: relative;
+    background-color:#045D5D	;	
+}
+
+.custom-card1 .header {
+    background-color: transparent;
+    padding: 10px;
+    color: white;
+
+}
+
+.custom-card1 .contenting {
+    background-color: transparent;
+    padding: 1px;
+    color: white;
+    font-size: 20px;
+    font-family: verdana;
+
+}
+
+.custom-card1 {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow */
+  transition: box-shadow 0.3s ease; /* Add transition for smooth effect */
+}
+
+/* Add hover effect */
+.custom-card1:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+
+
+
+.custom-carding {
+  width: calc(100% - 20px); /* Two cards per row with some spacing */
+  margin: 10px;
+  padding: 70px;
+  border: 1px solid #F0FFFF;
+  height: 190px;
+  border-radius: 4px;
+  position: relative;
+  background-color:#045D5D	;	
+}
+
+.custom-carding .header {
+  background-color: transparent;
+  padding: 10px;
+  color: white;
+
+}
+
+.custom-carding .contenting1 {
+  background-color: transparent;
+  padding: 1px;
+  color: white;
+  font-size: 37px;
+  font-family: verdana;
+
+}
+
+.custom-carding {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow */
+  transition: box-shadow 0.3s ease; /* Add transition for smooth effect */
+}
+
+/* Add hover effect */
+.custom-carding:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+
+
+
+
+
+
+
+.forgot-passwordon {
+  margin-top: -50px; /* Adjust the margin to move it down */
+  text-align: right;
+  color: white;
+  font-size: 16px;
+  font-family: Verdana;
+  flex-direction: column;
+  margin-right: -50px;
+}
+
+@media (max-width: 1300px) {
+  .forgot-passwordon {
+      display: block;
+
+
+  }
+}
+
+@media (min-width: 769px) {
+  .forgot-passwordon {
+      margin-left: 200px;
+
+  }
+}
+
+
+.forgot-passwordin {
+  margin-top: -40px; /* Adjust the margin to move it down */
+  text-align: left;
+  color: white;
+  font-size: 16px;
+  font-family: Verdana;
+  flex-direction: column;
+}
+
+@media (max-width: 1300px) {
+  .forgot-passwordin {
+      display: block;
+
+
+  }
+}
+
+@media (min-width: 769px) {
+  .forgot-passwordin {
+      margin-left: 200px;
+
+  }
+} 
+
+
+
+
+
+
+/* Large Screen Available Balance */
+
+.forgot-passwordup {
+  margin-top: -50px; /* Adjust the margin to move it down */
+  text-align: right;
+  color: white;
+  font-size: 20px;
+  font-family: Verdana;
+  flex-direction: column;
+  margin-right: -50px;
+}
+
+@media (max-width: 1300px) {
+  .forgot-passwordup {
+      display: block;
+
+
+  }
+}
+
+@media (min-width: 769px) {
+  .forgot-passwordup {
+      margin-left: 200px;
+
+  }
+}
+
+
+.forgot-passwordmon {
+  margin-top: -52px; /* Adjust the margin to move it down */
+  text-align: left;
+  color: white;
+  font-size: 20px;
+  font-family: Verdana;
+  flex-direction: column;
+  margin-right: -50px;
+}
+
+@media (max-width: 1300px) {
+  .forgot-passwordmon {
+      display: block;
+
+
+  }
+}
+
+@media (min-width: 769px) {
+  .forgot-passwordmon {
+      margin-left: 200px;
+
+  }
+} 
+
+
+
+
+
+
+
+.custom-card2 {
+  width: calc(100% - 20px); /* Two cards per row with some spacing */
+  margin: 10px;
+  padding: 70px;
+  height: 140px;
+  border: 1px solid #F0FFFF;
+  border-radius: 4px;
+  position: relative;
+  background-color:#045D5D	;	
+}
+
+.custom-card2 .header {
+  background-color: transparent;
+  padding: 10px;
+  color: white;
+
+}
+
+.custom-card2 .contenting1 {
+  background-color: transparent;
+  padding: 1px;
+  color: white;
+  font-size: 26px;
+  font-family: verdana;
+
+}
+
+  .custom-card2 {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow */
+      transition: box-shadow 0.3s ease; /* Add transition for smooth effect */
+  }
+
+  /* Add hover effect */
+  .custom-card2:hover {
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+  }
+
+
+
+
+.forgot-passing {
+  margin-top: -50px; /* Adjust the margin to move it down */
+  text-align: right;
+  color: white;
+  font-size: 14px;
+  font-family: Verdana;
+  flex-direction: column;
+  margin-right: -65px;
+}
+
+@media (max-width: 1300px) {
+  .forgot-passing {
+      display: block;
+
+
+  }
+}
+
+@media (min-width: 769px) {
+  .forgot-passing {
+      margin-left: 200px;
+
+  }
+}
+
+
+.forgot-passwordport {
+  margin-top: -41px; /* Adjust the margin to move it down */
+  text-align: left;
+  color: white;
+  font-size: 14px;
+  font-family: Verdana;
+  flex-direction: column;
+}
+
+@media (max-width: 1300px) {
+  .forgot-passwordport {
+      display: block;
+
+
+  }
+}
+
+@media (min-width: 769px) {
+  .forgot-passwordport {
+      margin-left: 200px;
+
+  }
+} 
+
+
+
+
+
+.custom-card {
+  width: calc(100% - 20px); /* Two cards per row with some spacing */
+  margin: 10px;
+  padding: 7px;
+  height: 170px;
+  border-radius: 4px;
+  position: relative;
+  font-family: Georgia;
+  border: 1px solid #F0FFFF;
+  background-image: linear-gradient(125deg, #040720		 70%, #C0C6C7 30%);
+
+}
+
+.custom-card .header {
+  background-color: transparent;
+  padding: 10px;
+  color: white;
+  margin-left: -10px;
+
+
+}
+
+.custom-card .content {
+  background-color: transparent;
+  color: white;
+  font-size: 14px;
+  font-family: verdana;
+  margin-top: -13px;
+
+}
+
+.custom-card   .btn {
+  margin-top: -95px;
+  padding: 10px 20px;
+  border: none;
+  background-color: red;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 900;
+
+}
+
+.custom-card .btn:hover {
+  background-color: #12E193	;
+  color: black;
+}
+
+@media only screen and (min-width: 290px) {
+
+
+  .custom-card .btn {
+    margin-left: 61%; /* Move the button to the right */
+}
+
+}
+
+
+
+
+
+.custom-card   .btn2 {
+  margin-top: 19px;
+  padding: 10px 20px;
+  border: none;
+  background-color: red;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 900;
+  margin-left: 5px; 
+
+}
+
+.custom-card .btn2:hover {
+  background-color: #12E193	;
+  color: black;
+}
+
+
+
+.custom-card   .btn7 {
+  margin-top: 13px;
+  padding: 10px 20px;
+  border: none;
+  background-color: red;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 900;
+  margin-left: 2px; 
+
+}
+
+
+.custom-card .btn7:hover {
+  background-color: #12E193	;
+  color: black;
+}
+
+
+
+
+
+
+.custom-card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow */
+  transition: box-shadow 0.3s ease; /* Add transition for smooth effect */
+}
+
+/* Add hover effect */
+.custom-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+
+
+/* Media query for medium screens */
+@media (min-width: 768px) {
+    .custom-card {
+        width: calc(50% - 20px); /* Two cards per row with some spacing */
+    }
+}
+
+/* Media query for large screens */
+@media (min-width: 992px) {
+    .custom-card {
+        width: calc(50% - 20px); /* Four cards per row with some spacing */
+    }
+}
+
+
+
+
+
+.custom-card8 {
+  width: calc(100% - 20px); /* Two cards per row with some spacing */
+  margin: 10px;
+  padding: 7px;
+  height: 170px;
+  color: black;
+  border: 1px solid #F0FFFF;
+  border-radius: 4px;
+  position: relative;
+  background-image: linear-gradient(125deg, #CFECEC	 70%, #E8E4C9		 30%);
+
+}
+
+.custom-card8 .header8 {
+  background-color: transparent;
+  padding: 10px;
+  color: white;
+  margin-left: -8px;
+
+}
+
+.custom-card8 .content8 {
+  background-color: transparent;
+  padding: 1px;
+  color: white;
+  font-size: 12px;
+  font-family: verdana;
+  margin-top: -12px;
+
+
+}
+
+.custom-card8   .btn3 {
+  margin-top: 1px;
+  padding: 10px 20px;
+  border: none;
+  background-color: red;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 900;
+  margin-left: 3px; 
+
+}
+
+
+
+
+.custom-card8   .btn {
+  margin-top: -130px;
+  padding: 10px 20px;
+  border: none;
+  background-color: red;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 900;
+
+}
+
+.custom-card8 .btn:hover {
+  background-color: #12E193	;
+  color: black;
+}
+
+@media only screen and (min-width: 290px) {
+
+
+  .custom-card8 .btn {
+    margin-left: 61%; /* Move the button to the right */
+}
+
+}
+
+
+
+
+
+
+
+.custom-card8   .btn8 {
+  margin-top: -4px;
+  padding: 10px 20px;
+  border: none;
+  background-color: red;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 900;
+  margin-left: 1px; 
+
+}
+
+
+.custom-card8 .btn8:hover {
+  background-color: #12E193	;
+  color: black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.custom-card8 .btn3:hover {
+  background-color: #12E193	;
+  color: black;
+}
+
+
+
+.custom-card8 {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow */
+  transition: box-shadow 0.3s ease; /* Add transition for smooth effect */
+}
+
+/* Add hover effect */
+.custom-card8:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+
+
+/* Media query for medium screens */
+@media (min-width: 768px) {
+    .custom-card8 {
+        width: calc(50% - 20px); /* Two cards per row with some spacing */
+    }
+}
+
+/* Media query for large screens */
+@media (min-width: 992px) {
+    .custom-card8 {
+        width: calc(50% - 20px); /* Four cards per row with some spacing */
+    }
+}
+
+
+
+
+
+.custom-card3 {
+  max-width: 100%; /* Two cards per row with some spacing */
+  margin: 10px;
+  padding: 70px;
+  height: 170px;
+  border: 1px solid #F0FFFF;
+  border-radius: 4px;
+  position: relative;
+  background-color: #25383C;
+}
+
+.custom-card3 .header3 {
+  background-color: transparent;
+  padding: 10px;
+  color: white;
+
+}
+
+.custom-card3 .content3 {
+  background-color: transparent;
+  padding: 1px;
+  color: white;
+  font-size: 24px;
+  font-family: verdana;
+
+}
+
+.custom-card3 {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow */
+  transition: box-shadow 0.3s ease; /* Add transition for smooth effect */
+}
+
+/* Add hover effect */
+.custom-card3:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+
+
+/* Media query for medium screens */
+@media (min-width: 768px) {
+    .custom-card3 {
+        width: calc(100% - 20px); /* Two cards per row with some spacing */
+    }
+}
+
+/* Media query for large screens */
+@media (min-width: 992px) {
+    .custom-card3 {
+        width: calc(100% - 20px); /* Four cards per row with some spacing */
+    }
+}
+
+
+.forgot-passpop {
+  margin-top: -10px; /* Adjust the margin to move it down */
+  text-align: left;
+  color: white;
+  font-size: 17px;
+  font-family: Verdana;
+  flex-direction: column;
+  margin-left: -51px;
+}
+
+@media (max-width: 1300px) {
+  .forgot-passpop {
+      display: block;
+
+
+  }
+}
+
+@media (min-width: 769px) {
+  .forgot-passpop {
+      margin-left: ;
+
+  }
+}
+
+
+.forgot-passwordpip {
+  margin-top: -36px; /* Adjust the margin to move it down */
+  text-align: left;
+  color: white;
+  font-size: 10px;
+  font-family: Verdana;
+  flex-direction: column;
+}
+
+@media (max-width: 1300px) {
+  .forgot-passwordpip {
+      display: block;
+
+
+  }
+}
+
+@media (min-width: 769px) {
+  .forgot-passwordpip {
+      margin-left: ;
+
+  }
+} 
+
+
+
+
+
+
+
+
+
+.custom-card4 {
+  width: calc(100% - 20px); /* Two cards per row with some spacing */
+  margin: 10px;
+  padding: 70px;
+  height: 170px;
+  border-radius: 4px;
+  position: relative;
+  border: 1px solid #F0FFFF	;
+  background-color: #040720		;
+
+}
+
+.custom-card4 .header4 {
+  background-color: transparent;
+  padding: 10px;
+  color: white;
+
+}
+
+.custom-card4 .content4 {
+  background-color: transparent;
+  padding: 1px;
+  color: white;
+  font-size: 24px;
+  font-family: verdana;
+
+}
+
+.custom-card4 {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow */
+  transition: box-shadow 0.3s ease; /* Add transition for smooth effect */
+}
+
+/* Add hover effect */
+.custom-card4:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+
+
+/* Media query for medium screens */
+@media (min-width: 768px) {
+    .custom-card4 {
+        width: calc(50% - 20px); /* Two cards per row with some spacing */
+    }
+}
+
+/* Media query for large screens */
+@media (min-width: 992px) {
+    .custom-card4 {
+        width: calc(50% - 20px); /* Four cards per row with some spacing */
+    }
+}
+
+
+
+
+
+.forgot-passpoppy {
+  margin-top: -10px; /* Adjust the margin to move it down */
+  margin-top: -50px; /* Adjust the margin to move it down */
+  text-align: right;
+  color: white;
+  font-size: 15px;
+  font-family: Verdana;
+  flex-direction: column;
+  margin-right: -65px;
+}
+
+@media (max-width: 1300px) {
+  .forgot-passing {
+      display: block;
+
+
+  }
+}
+
+@media (min-width: 769px) {
+  .forgot-passing {
+      margin-left: 200px;
+
+  }
+}
+
+
+.forgot-passwordpippip {
+  margin-top: -42px; /* Adjust the margin to move it down */
+  text-align: left;
+  color: white;
+  font-size: 13px;
+  font-family: Verdana;
+  flex-direction: column;
+}
+
+@media (max-width: 1300px) {
+  .forgot-passwordpippip {
+      display: block;
+
+
+  }
+}
+
+@media (min-width: 769px) {
+  .forgot-passwordpippip {
+      margin-left: ;
+
+  }
+} 
+
+
+
+
+.custom-card5 {
+  position: relative;
+  width: calc(100% - 20px); /* Two cards per row with some spacing */
+  margin: 10px;
+  padding: 7px;
+  border: 1px solid #F0FFFF;
+  border-radius: 4px;
+  overflow: hidden; /* Ensure content doesn't overflow */
+  display: flex;
+}
+
+.video-container {
+  flex: 1;
+  position: relative;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-content-container12 {
+  position: relative;
+  display: flex;
+  flex: 1;
+  z-index: 1;
+}
+
+.image-container12 {
+  flex: 1;
+  padding: 10px;
+}
+
+.card-image12 {
+  width: 50%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.content-container12 {
+  flex: 1;
+  padding: 10px;
+  box-sizing: border-box;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 0 4px 4px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.additional-content {
+  padding: 10px;
+  box-sizing: border-box;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 0 4px 4px 0;
+  margin-top: 10px; /* Add some spacing between the content and additional content */
+}
+
+@media only screen and (max-width: 600px) {
+  .custom-card5 {
+      flex-direction: column;
+  }
+
+  .image-content-container12 {
+      flex-direction: column;
+  }
+
+  .image-container12,
+  .content-container12 {
+      flex: 1;
+      width: 100%;
+      padding-bottom: 0;
+  }
+
+  .card-image12 {
+      border-radius: 4px 4px 0 0;
+      
+  }
+}
+.custom-card5 {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow */
+  transition: box-shadow 0.3s ease; /* Add transition for smooth effect */
+}
+
+/* Add hover effect */
+.custom-card5:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+
+
+.custom-card6 {
+  position: relative;
+  width: calc(100% - 20px); /* Two cards per row with some spacing */
+  margin: 10px;
+  padding: 7px;
+  height: 230px;
+  border: 1px solid #F0FFFF;
+  border-radius: 4px;
+  overflow: hidden; /* Ensure content doesn't overflow */
+  display: flex;
+}
+
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cover the entire card with the video */
+}
+
+.content-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  color: white;
+  
+}
+
+.image-container {
+  flex: 0 0 30%; /* Set width for the image container */
+}
+
+.card-image {
+  width: 120%;
+  height: 100px;
+  border-radius: 4px;
+  margin-top: -25px;
+  margin-left: -6px;
+
+}
+
+.text-container {
+  flex: 3; /* Take remaining space */
+  padding-left
+}
+
+.header6,
+.content6 {
+  color: white;
+  padding: px;
+  border-radius: 4px;
+  text-align: right;
+}
+
+@media only screen and (max-width: 600px) {
+  .custom-card6 {
+      flex-direction: column; /* Stack elements vertically on small screens */
+  }
+
+  .image-container {
+      flex: 1; /* Take full width on small screens */
+      width: 100%;
+  }
+
+  .card-image {
+      border-radius: 4px 4px 0 0; /* Rounded corners for top of image */
+  }
+}
+
+.custom-card6 {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow */
+  transition: box-shadow 0.3s ease; /* Add transition for smooth effect */
+}
+
+/* Add hover effect */
+.custom-card6:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+
+
+
+
+
+.custom-card100 {
+  position: relative;
+  width: calc(100% - 20px); /* Two cards per row with some spacing */
+  margin: 10px;
+  padding: 7px;
+  height: 230px;
+  border: 1px solid #F0FFFF;
+  border-radius: 4px;
+  overflow: hidden; /* Ensure content doesn't overflow */
+  display: flex;
+}
+
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cover the entire card with the video */
+}
+
+.content-container100 {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  color: white;
+  
+}
+
+.image-container100 {
+  flex: 0 0 30%; /* Set width for the image container */
+}
+
+.card-imageing {
+  width: 120%;
+  height: 130px;
+  border-radius: 4px;
+  margin-top: -25px;
+  margin-left: -6px;
+
+}
+
+.text-container100 {
+  flex: 3; /* Take remaining space */
+  padding-left
+}
+
+.headering,
+.contenting {
+  color: white;
+  padding: px;
+  border-radius: 4px;
+  text-align: right;
+}
+
+@media only screen and (max-width: 600px) {
+  .custom-card100 {
+      flex-direction: column; /* Stack elements vertically on small screens */
+  }
+
+  .image-container100 {
+      flex: 1; /* Take full width on small screens */
+      width: 100%;
+  }
+
+  .card-imageing {
+      border-radius: 4px 4px 0 0; /* Rounded corners for top of image */
+  }
+}
+
+.custom-card100 {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow */
+  transition: box-shadow 0.3s ease; /* Add transition for smooth effect */
+}
+
+/* Add hover effect */
+.custom-card100:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+
+
+
+
+
+.custom-card200 {
+  position: relative;
+  width: calc(100% - 20px); /* Two cards per row with some spacing */
+  margin: 10px;
+  padding: 7px;
+  height: 230px;
+  border: 1px solid #F0FFFF;
+  border-radius: 4px;
+  overflow: hidden; /* Ensure content doesn't overflow */
+  display: flex;
+}
+
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cover the entire card with the video */
+}
+
+.content-container200 {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  color: white;
+  
+}
+
+.image-container200 {
+  flex: 0 0 30%; /* Set width for the image container */
+}
+
+.card-imageingon {
+  width: 120%;
+  height: 170px;
+  border-radius: 4px;
+  margin-top: -25px;
+  margin-left: -6px;
+
+}
+
+.text-container200 {
+  flex: 3; /* Take remaining space */
+  padding-left
+}
+
+.headeringon,
+.contentingon {
+  color: white;
+  padding: px;
+  border-radius: 4px;
+  text-align: right;
+}
+
+@media only screen and (max-width: 600px) {
+  .custom-card200 {
+      flex-direction: column; /* Stack elements vertically on small screens */
+  }
+
+  .image-container200 {
+      flex: 1; /* Take full width on small screens */
+      width: 100%;
+  }
+
+  .card-image200 {
+      border-radius: 4px 4px 0 0; /* Rounded corners for top of image */
+  }
+}
+
+.custom-card200 {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow */
+  transition: box-shadow 0.3s ease; /* Add transition for smooth effect */
+}
+
+/* Add hover effect */
+.custom-card200:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+
+
+.custom-card7 {
+  width: calc(100% - 20px); /* Two cards per row with some spacing */
+  margin: 10px;
+  padding: 7px;
+  height: 170px;
+  border-radius: 4px;
+  position: relative;
+  background-image: linear-gradient(120deg, #033E3E		 70%, #FBFBF9	 30%);
+
+}
+
+.custom-card7 .header7 {
+  background-color: transparent;
+  padding: 10px;
+  color: white;
+
+}
+
+.custom-card7 .content7 {
+  background-color: transparent;
+  padding: 1px;
+  color: white;
+  font-size: 12px;
+  font-family: verdana;
+
+}
+
+
+.custom-card7 {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow */
+  transition: box-shadow 0.3s ease; /* Add transition for smooth effect */
+}
+
+/* Add hover effect */
+.custom-card7:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+
+
+/* Media query for medium screens */
+@media (min-width: 768px) {
+    .custom-card7 {
+        width: calc(50% - 20px); /* Two cards per row with some spacing */
+    }
+}
+
+/* Media query for large screens */
+@media (min-width: 992px) {
+    .custom-card7 {
+        width: calc(50% - 20px); /* Four cards per row with some spacing */
+    }
+}
+
+
+
+
+
+
+
+
+
+.flipper {
+  display: inline-block; /* Ensure container only takes up necessary space */
+  animation: flip-horizontal 2s linear infinite; /* Change 3s to desired pause duration */
+}
+
+@keyframes flip-horizontal {
+  0%, 100% { transform: rotateY(0deg); }
+ 50% { transform: rotateY(20deg); } /* Adjust the percentages for the pause */
+}
+
+
+
+
+
+
+
+
+.notify {
+  text-align: right;
+  margin-top: -43px;
+  color: white;
+  text-decoration: none;
+  {% comment %} position: relative;
+  display: inline-block; {% endcomment %}
+  border-radius: 2px;
+}
+
+
+.notify .badge {
+  position: absolute;
+  margin-top: 1px;
+  right: 11px;
+  padding: 4px 4px;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+  
+}
+
+
+
+
+.mess {
+  text-decoration: none;
+  color: white;
+}
+
+.w3-panel{
+  margin-top: 57px;
+  height: 40px;
+  font-size:16px;
+  
+  background-color:#FFFFFF;
+
+}
+
+
+.blot {
+  margin-left: -60px;
+  text-align: left;
+}
+
+
+
+.fa-notification::before {
+  content: " ";
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  width: 15px;
+  height: 15px;
+  background-color: red;
+  border-radius: 50%;
+}
+
+
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.message-number {
+  animation: bounce 1s infinite;
+}
+
+
+
+
+
+.notification {
+  text-align: right;
+  margin-top: -58px;
+  color: white;
+  text-decoration: none;
+  {% comment %} position: relative;
+  display: inline-block; {% endcomment %}
+  border-radius: 2px;
+}
+
+
+.notification .badge {
+  position: absolute;
+  margin-top: 3px;
+  right: 12px;
+  padding: 5px 5px;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+  
+}
+</style>
+
+
+
+<div class="w3-panel  w3-hide-large w3-hide-medium" style="font-weight: 400; margin-top: 57px;">
+  <p style="margin-top: 7px; font-family: Georgia;">{% if user.is_authenticated %}Hi, {{ user.username }}{% else %}Hi, Please Log In{% endif %} </p>
+  <p class="notify">
+    <a style="color: black;" href="{% url 'all_transactions' %}">
+        <i class="fa-solid fa-bell"></i>
+        <span id="badgeBig" class="badge"></span>
+    </a>
+</p>
+
+</div>
+
+
+<div class="w3-panel w3-hide-small w3-xlarge" style="margin-top: 57px;">
+  <p style="font-family: Georgia; margin-right: 30px;">{% if user.is_authenticated %}Hi, {{ user.username }}{% else %}Hi, Please Log In{% endif %}</p>
+  <p class="notification">
+    <a style="color: black;" href="{% url 'all_transactions' %}">
+        <i class="fa-solid fa-bell"></i>
+        <span id="badgeSmall" class="badge"></span>
+    </a>
+</p>
+
+
+
+</div>
+
+
+  <div class="  w3-hide-small w3-hide-large custom-card1">
+    <div class="header">
+        <p class="forgot-passwordon" style=""><a style="text-decoration: none; color: white;" href="{% url 'all_transactions' %}"> Transaction History <i class="fa-solid fa-arrow-right"></i> </a></p>
+        <p class="forgot-passwordin" style="margin-left: -66px">
+          <i class='fas fa-shield-alt'></i> Available Balance 
+          <i class="fa-solid fa-eye" id="toggleIcon" onclick="toggleBalance()"></i></p>
+      </div>
+    <div class="contenting">
+      <p class="blot" id="balance" style="margin-left: ; margin-top: -12px;" data-amount="1,591,980.00" data-hidden="false">＄{{ balance.amount|intcomma }} </p>
+    </div> 
+  </div>
+  
+
+  <div class="  w3-hide-small w3-hide-medium custom-carding">
+    <div class="header">
+        <p class="forgot-passwordup" style=""><a style="text-decoration: none; color: white;"  href="{% url 'all_transactions' %}"> Transaction History <i class="fa-solid fa-arrow-right"></i> </a></p>
+        <p class="forgot-passwordmon" style="margin-left: -60px"><i class="fas fa-shield-alt"></i> Available Balance <i class="fa-solid fa-eye" id="toggleIcon1" onclick="toggleBalance1()"></i> </p>
+    </div>
+    <div class="contenting1">
+        <p id="balance1" data-amount="1,591,980.00" data-hidden="false" style="margin-left: -61px; margin-top: -3px;">＄{{ balance.amount|intcomma }} </p>
+    </div>
+</div>
+
+
+
+
+
+<div class="w3-hide-medium w3-hide-large custom-card2" style="background-color: #045D5D;">
+  <div class="header">
+      <p class="forgot-passing" style=""><a style="text-decoration: none; color: white;"  href="{% url 'all_transactions' %}"> Transaction History <i class="fa-solid fa-arrow-right"></i> </a></p>
+      <p class="forgot-passwordport" style="margin-left: -69px"><i class="fas fa-shield-alt"></i> Available Balance <i class="fa-solid fa-eye" id="toggleIcon2" onclick="toggleBalance2()"></i> </p>
+  </div>
+  <div class="contenting1">
+      <p id="balance2" data-amount="1,591,980.00" data-hidden="false" style="margin-left: -63px; margin-top: -18px;">＄{{ balance.amount|intcomma }} </p>
+  </div>
+</div>
+
+
+
+
+
+      <div class="w3-hide- custom-card3" >
+        <div class="header3">
+          <p class="forgot-passwordpip" style="margin-left: -60px"><i class="fa-solid fa-chart-simple fa-2xl"></i> </p>        
+        </div>
+        <div class="content3">
+          <p id="balance3" data-amount="1,591,980.00" data-hidden="false" style="margin-left: -58px; margin-top: -18px;">＄{{ balance.amount1|intcomma }} </p>
+          <p class="forgot-passpop" style="">Ledger Balance <i class="fa-solid fa-eye" id="toggleIcon3" onclick="toggleBalance3()"></i></p>
+
+        </div>
+      </div>
+      
+
+
+
+
+
+<img class="w3-hide-medium w3-hide-large flipper" src='https://i.postimg.cc/fyYf4bXM/master-card-modified-imageonline-co-6351255.jpg' style="height: 250px; margin-top: -2px; border-radius: 12px; border: 2px solid #F0FFFF;">
+
+
+
+
+
+
+
+
+    <script>
+      function toggleBalance() {
+          var balance = document.getElementById("balance");
+          var icon = document.getElementById("toggleIcon");
+          if (balance.dataset.hidden === "true") {
+              balance.innerHTML = balance.dataset.amount;
+              balance.dataset.hidden = "false";
+              icon.classList.remove("fa-eye-slash");
+              icon.classList.add("fa-eye");
+          } else {
+              balance.dataset.amount = balance.innerHTML;
+              balance.innerHTML = "＄" + "*".repeat(balance.innerHTML.length - 1);
+              balance.dataset.hidden = "true";
+              icon.classList.remove("fa-eye");
+              icon.classList.add("fa-eye-slash");
+          }
+      }
+  </script>
+
+  <script>
+    function toggleBalance1() {
+        var balance = document.getElementById("balance1");
+        var icon = document.getElementById("toggleIcon1");
+        var amount = "1,591,980.00"; // Your actual balance amount without the dollar sign
+        if (balance.dataset.hidden === "true") {
+            balance.innerHTML = balance.dataset.amount;
+            balance.dataset.hidden = "false";
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
+        } else {
+            balance.dataset.amount = balance.innerHTML;
+            balance.innerHTML = "＄" + "*".repeat(balance.innerHTML.length - 1);
+            balance.dataset.hidden = "true";
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash");
+        }
+    }
+</script>
+
+<script>
+  function toggleBalance2() {
+      var balance = document.getElementById("balance2");
+      var icon = document.getElementById("toggleIcon2");
+      var amount = "1,591,980.00"; // Your actual balance amount without the dollar sign
+      if (balance.dataset.hidden === "true") {
+          balance.innerHTML = balance.dataset.amount;
+          balance.dataset.hidden = "false";
+          icon.classList.remove("fa-eye-slash");
+          icon.classList.add("fa-eye");
+      } else {
+          balance.dataset.amount = balance.innerHTML;
+          balance.innerHTML = "＄" + "*".repeat(balance.innerHTML.length - 1);
+          balance.dataset.hidden = "true";
+          icon.classList.remove("fa-eye");
+          icon.classList.add("fa-eye-slash");
+      }
+  }
+</script>
+
+<script>
+  function toggleBalance3() {
+      var balance = document.getElementById("balance3");
+      var icon = document.getElementById("toggleIcon3");
+      var amount = "1,591,980.00"; // Your actual balance amount without the dollar sign
+      if (balance.dataset.hidden === "true") {
+          balance.innerHTML = balance.dataset.amount;
+          balance.dataset.hidden = "false";
+          icon.classList.remove("fa-eye-slash");
+          icon.classList.add("fa-eye");
+      } else {
+          balance.dataset.amount = balance.innerHTML;
+          balance.innerHTML = "＄" + "*".repeat(balance.innerHTML.length - 1);
+          balance.dataset.hidden = "true";
+          icon.classList.remove("fa-eye");
+          icon.classList.add("fa-eye-slash");
+      }
+  }
+</script>
+
+<script>
+  var dateElement = document.getElementById("date");
+  var currentDate = new Date();
+  var dateString = currentDate.toDateString();
+  var timeString = currentDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
+
+  dateElement.textContent = " " + dateString + " @ " + timeString;
+</script>
+
+
+<script>
+  var dateElement = document.getElementById("date2");
+  var currentDate = new Date();
+  var dateString = currentDate.toDateString();
+  var timeString = currentDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
+
+  dateElement.textContent = " " + dateString + " @ " + timeString;
+</script>
+
+
+
+<script>
+  var dateElement = document.getElementById("date3");
+  var currentDate = new Date();
+  var dateString = currentDate.toDateString();
+  var timeString = currentDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
+
+  dateElement.textContent = " " + dateString + " @ " + timeString;
+</script>
+
+
+
+
+
+
+<script>
+
+  function updateMessageCount() {
+    fetch('/get_message_count/')  // Assuming this is the URL to your get_message_count view
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('balance9').textContent = data.count.toString();
+        });
+}
+
+// Call the function to update the message count initially
+updateMessageCount();
+
+</script>
+
+<script>
+  function updateBadgeBig() {
+      fetch('{% url "check_new_transactions" %}')
+          .then(response => response.json())
+          .then(data => {
+              var badge = document.getElementById('badgeBig');
+              if (badgeBig) {
+                  badgeBig.style.display = data.has_new_transactions ? 'inline-block' : 'none';
+              }
+          });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+      updateBadgeBig();  // Update badge status when the page loads
+      setInterval(updateBadgeBig, 5000);  // Check for new transactions every 5 seconds
+  });
+</script>
+
+
+
+<script>
+  function updateBadge() {
+      fetch('{% url "check_new_transactions" %}')
+          .then(response => response.json())
+          .then(data => {
+              var badge = document.getElementById('badgeSmall');
+              if (badgeSmall) {
+                  badge.style.display = data.has_new_transactions ? 'inline-block' : 'none';
+              }
+          });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+      updateBadge();  // Update badge status when the page loads
+      setInterval(updateBadge, 5000);  // Check for new transactions every 5 seconds
+  });
+</script>
+
+{% endblock  %}
+

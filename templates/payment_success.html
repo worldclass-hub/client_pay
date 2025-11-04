@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<title>Email Sent Successfully</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #fff;
+    }
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+    }
+    .success-image {
+        max-width: 50%;
+        margin-left: -1px;
+        height: 50%;
+    }
+
+    .success-image1 {
+        max-width: 35%;
+        margin-left: -1px;
+        margin-top: 120px;
+        height: 35%;
+    }
+
+    .message {
+        margin-top: 40px;
+        font-size: 25px;
+        color: #333;
+    }
+
+
+    .message2 {
+        margin-top: 50px;
+        font-size: 24px;
+        color: #333;
+    }
+
+
+    .message3 {
+        margin-top: 50px;
+        font-size: 24px;
+        color: #616D7E	;
+    }
+
+
+
+    .button {
+        display: inline-block;
+        margin-top: 40px;
+        padding: 10px 60px;
+        background-color: #4CAF50;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <img src="https://i.postimg.cc/Y07S4jBK/success-56.png" alt="Success Image" class="success-image1 w3-hide-medium w3-hide-large">
+
+    <img src="https://i.postimg.cc/Y07S4jBK/success-56.png" alt="Success Image" class="success-image w3-hide-small">
+
+    <div class="message">Message sent successfully</div>
+
+    <div class="message2">Thank you Dear valued Customer</div>
+
+    <div class="message3">We have sent a message to you, please check your Email you submitted and respond. </div>
+
+
+    <a href="{% url 'base' %}" class="button">Go Home</a>
+</div>
+</body>
+</html>

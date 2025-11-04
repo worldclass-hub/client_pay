@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<title>Worldbank</title>
+<link rel="icon" href="https://i.postimg.cc/8P7NLtNC/worldbank-icon-modified.png" type="image/png" sizes="80x80">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #fff;
+    }
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+    }
+    .success-image {
+        max-width: 50%;
+        margin-left: 13px;
+        height: 50%;
+    }
+
+    .success-image1 {
+        max-width: 50%;
+        margin-left: -4px;
+        margin-top: 120px;
+        height: 35%;
+    }
+
+    .message {
+        margin-top: 50px;
+        font-size: 24px;
+        font-family: verdana;
+        color: #333;
+    }
+
+
+    .message1 {
+        margin-top: 10px;
+        font-size: 24px;
+        font-family: verdana;
+        font-weight: 900;
+        color: #333;
+        margin-left: -8px;
+
+    }
+
+
+
+    .message2 {
+        margin-top: 55px;
+        font-size: 14px;
+        font-family: verdana;
+        font-weight: 500;
+        color: #333;
+    }
+
+
+    .message3 {
+        margin-top: 40px;
+        font-size: 14px;
+        font-family: verdana;
+        font-weight: 300;
+        color: #333;
+    }
+
+
+    .message4 {
+        margin-top:5px;
+        font-size: 13px;
+        font-family: verdana;
+        color: #6a0dad;
+        
+    }
+    
+    .button {
+        display: inline-block;
+        margin-top: 25px;
+        padding: 10px 60px;
+        background-color: #6a0dad;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+
+
+
+.content {
+    height: 100vh; /* Set the height of the content to fill the viewport */
+    padding: 20px;
+}
+
+footer.transparent-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.2); /* Set the background color with 50% opacity */
+    text-align: center;
+}
+
+footer.transparent-footer img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+</style>
+</head>
+<body>
+<div class="container">
+    {% for my_transfer in my_transfers %}
+
+    <img src="{{ my_transfer.image.url }}" alt="Success Image" class="success-image1 w3-hide-medium w3-hide-large">
+
+    <img src="{{ my_transfer.image.url }}" alt="Success Image" class="success-image w3-hide-small">
+
+    <div class="message">{{ my_transfer.message1 }}</div>
+
+
+    <div class="message1">＄{{ my_transfer.amount }}</div>
+
+    <a href="{% url 'payment' %}" class="button">ACCEPT MONEY</a>
+
+    <div class="message2">{{ my_transfer.message2 }}</div>
+
+     <div class="message3">{{ my_transfer.message3 }}</div>
+
+     <div class="message4">{{ my_transfer.message4 }}</div>
+
+
+     {% comment %} <footer class="transparent-footer">
+        <img src="{{ my_transfer.image.url }}" height="" width="50px"  alt="Footer Image">
+    </footer> {% endcomment %}
+    {% endfor %}
+
+</div>
+</body>
+</html>

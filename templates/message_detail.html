@@ -1,0 +1,170 @@
+{% extends 'message_detailshouse.html' %}
+{% load custom_filters %}
+
+{% load static %}
+{% block content %}
+
+
+
+
+<style>
+
+    .fant {
+        text-align: right;
+        margin-top: -58px;
+      }
+      
+      
+      .fanting {
+        text-align: right;
+        margin-top: -43px;
+    }
+      
+
+.class{
+    text-align: right;
+    margin-top: -42px;
+}
+
+.dot {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 12px;
+    font-family: arial;
+    color: #000080;
+}
+
+#customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #customers td, #customers th {
+    border: 1px solid #2C3539;
+    padding: 8px;
+  }
+  
+  #customers tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #customers tr:hover {background-color: #E0E5E5; color: #040720;}
+  
+  #customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: ;
+    color: black;
+  }
+
+
+  .result {
+    font-size: ;
+    font-weight:400;
+    font-family: Helvetica; 
+    background-color: #DADBDD	;
+    font-size: 9px;
+
+  }
+
+
+  .result1 {
+    font-size: ;
+    background-color: #C0C0C0;
+    font-weight:bold; 
+    font-size: 10px;
+
+
+  } 
+
+
+  .result2 {
+    font-weight:bold; 
+    background-color: #DADBDD;
+    font-size: 10px;
+
+  }
+</style>
+
+<br>
+<br>
+<br>
+<br>
+
+<div class="container">
+
+  <h2 style="font-family: Georgia">{{ message.heading }} to <span>{{ user.username|capitalize_first_letter }}</span> <span style="font-family: garamond; font-size: 17px; "> - {{ message.date }}, {{ message.time }}</span> </h2> 
+        <img src="{{ message.image.url }}" alt="Message Image">
+        <br>
+        <br>
+        <p style="font-family: lucida;" >{{ message.content }}</p>
+
+
+
+<p style="font-family: Georgia; color: #151B54	;">{{ message.paragraph_class }}</p>
+
+
+<table id="customers">
+    <tr>
+      <th  class="result1">Account Name</th>
+      <th class="result">{{ message.text_Account_name }}</th>
+    </tr>
+    <tr>
+      <td class="result2">Transaction Type</td>
+      <td class="result">{{ message.text_Transaction_Type }}</td>
+    </tr>
+    <tr>
+      <td class="result1">Transaction Amount</td>
+      <td class="result">{{ message.text_Transaction_Amount }} <i class="fa-brands fa-bitcoin"></i></td>
+    </tr>
+    <tr>
+      <td class="result2" >Transaction Currency</td>
+      <td class="result">{{ message.text_Transaction_Currency }} <i class="fa-solid fa-dollar-sign"></i></td>
+    </tr>
+    <tr>
+      <td class="result1">Account Number</td>
+      <td class="result">{{ message.text_Account_Number }}</td>
+    </tr>
+    <tr>
+      <td class="result2">Transaction Narration</td>
+      <td class="result">{{ message.text_Transaction_Narration }}</td>
+    </tr>
+    <tr>
+      <td class="result1">Transaction Remarks</td>
+      <td class="result">{{ message.text_Transaction_Remarks }}</td>
+    </tr>
+    <tr>
+      <td class="result2">Date and Time</td>
+      <td class="result">{{ message.date }} {{ message.time }}</td>
+    </tr>
+    <tr>
+      <td class="result1">Available Balance</td>
+      <td class="result" style="font-weight: bold;">{{ message.text_Available_Balance }} <i class="fa-brands fa-bitcoin"></i></td>
+    </tr>
+    <tr>
+      <td class="result2">Cleared Balance</td>
+      <td class="result">{{ message.text_Cleared_Balance}} <i class="fa-brands fa-bitcoin"></i></td>
+    </tr>
+    
+  </table>
+<br>
+
+<p style="font-weight: bold; font-family: ;"> {{ message.text_News_Update1 }}</p>
+<br>
+<p style="font-weight: bold; font-family: ;">{{ message.text_News_Update2 }} </p>
+<br>
+</div>
+
+
+  
+<!-- ========================= SECTION CONTENT END// ========================= -->
+{% endblock  %}
+
+
+
+
+
+
+
+
+
