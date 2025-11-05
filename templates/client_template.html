@@ -7,218 +7,229 @@
     <title>Payment Confirmation - World Bank</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
         }
-        .gradient-bg {
+        
+        .status-pending {
+            background-color: #fef3c7;
+            color: #d97706;
+            border: 1px solid #fcd34d;
+        }
+        
+        .status-completed {
+            background-color: #d1fae5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+        }
+        
+        .shadow-card {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .bank-gradient {
             background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
         }
-        .receipt-card {
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        
+        .amount-highlight {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        .success-check {
-            animation: scaleCheck 0.5s ease-in-out;
+        
+        .pulse {
+            animation: pulse 2s infinite;
         }
-        @keyframes scaleCheck {
-            0% { transform: scale(0); }
-            70% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-        .fade-in {
-            animation: fadeIn 0.8s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
         }
     </style>
 </head>
 <body class="bg-gray-50">
-    <div class="min-h-screen flex flex-col">
+    <div class="max-w-2xl mx-auto my-8 bg-white rounded-xl shadow-card overflow-hidden">
         <!-- Header -->
-        <header class="gradient-bg text-white py-4">
-            <div class="container mx-auto px-4 flex justify-between items-center">
-                <div class="flex items-center space-x-2">
-                    <img src="https://i.postimg.cc/Xvw2wz47/world_bank_2-modified_(1).png" alt="World Bank Logo" class="h-10">
-                    <span class="text-xl font-semibold">World Bank</span>
+        <div class="bank-gradient text-white p-6">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <img src="https://i.postimg.cc/Xvw2wz47/world_bank_2-modified_(1).png" alt="World Bank Logo" class="h-12 w-auto">
+                    <div>
+                        <h1 class="text-xl font-bold">World Bank Group</h1>
+                        <p class="text-blue-100 text-sm">International Banking & Finance</p>
+                    </div>
                 </div>
-                <div class="text-sm">
-                    <span id="current-date-time"></span>
+                <div class="text-right">
+                    <p class="text-sm opacity-90">Transaction Receipt</p>
+                    <p class="text-xs opacity-75">{{ date }}</p>
                 </div>
             </div>
-        </header>
-
-        <!-- Main Content -->
-        <main class="flex-grow py-8">
-            <div class="container mx-auto px-4 max-w-2xl">
-                <!-- Success Card -->
-                <div class="receipt-card bg-white rounded-xl overflow-hidden mb-6 fade-in">
-                    <div class="gradient-bg text-white py-6 px-6 text-center">
-                        <div class="success-check inline-flex items-center justify-center w-16 h-16 bg-white bg-opacity-20 rounded-full mb-4">
-                            <i class="fas fa-check-circle text-3xl text-white"></i>
+        </div>
+        
+        <!-- Status Banner -->
+        <div class="bg-white border-b">
+            <div class="p-6">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="flex items-center space-x-4 mb-4 md:mb-0">
+                        <div class="h-14 w-14 rounded-full bg-green-50 flex items-center justify-center">
+                            <i class="fas fa-check-circle text-green-500 text-2xl"></i>
                         </div>
-                        <h1 class="text-2xl font-bold">Payment Received</h1>
-                        <p class="text-blue-100 mt-2">Your transaction was completed successfully</p>
-                    </div>
-
-                    <div class="p-6">
-                        <!-- Greeting -->
-                        <div class="mb-6 text-center">
-                            <p class="text-gray-700">Hi <span class="font-semibold text-blue-600">{{ name }}</span>,</p>
-                            <p class="text-gray-600 mt-2">Thank you for your payment. We've received your transaction and it's being processed.</p>
-                        </div>
-
-                        <!-- Payment Summary -->
-                        <div class="bg-blue-50 rounded-lg p-4 mb-6">
-                            <div class="flex justify-between items-center">
-                                <div>
-                                    <p class="text-gray-600">Amount Paid</p>
-                                    <p class="text-2xl font-bold text-gray-800">${{ amount }}</p>
-                                </div>
-                                <div class="text-right">
-                                    <p class="text-gray-600">Date</p>
-                                    <p class="font-medium text-gray-800">{{ date }}</p>
-                                </div>
-                            </div>
-                            <div class="mt-4 pt-4 border-t border-blue-100">
-                                <p class="text-gray-600">Payment Method</p>
-                                <p class="font-medium text-gray-800 flex items-center">
-                                    <i class="fas fa-university mr-2 text-blue-500"></i>
-                                    Bank Account {{ bank_account_number }}
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- First Message -->
-                        {% if first_message %}
-                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
-                            <div class="flex">
-                                <div class="flex-shrink-0">
-                                    <i class="fas fa-info-circle text-yellow-400"></i>
-                                </div>
-                                <div class="ml-3">
-                                    <p class="text-sm text-yellow-700">{{ first_message }}</p>
-                                </div>
-                            </div>
-                        </div>
-                        {% endif %}
-                    </div>
-                </div>
-
-                <!-- Payment Details -->
-                <div class="receipt-card bg-white rounded-xl p-6 mb-6 fade-in" style="animation-delay: 0.2s;">
-                    <h2 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
-                        <i class="fas fa-receipt mr-2 text-blue-500"></i>
-                        Payment Details
-                    </h2>
-                    
-                    <div class="space-y-4">
-                        <div class="flex justify-between py-2 border-b border-gray-100">
-                            <span class="text-gray-600 font-medium">Amount</span>
-                            <span class="font-semibold text-gray-800">${{ amount }}</span>
-                        </div>
-                        <div class="flex justify-between py-2 border-b border-gray-100">
-                            <span class="text-gray-600 font-medium">Date</span>
-                            <span class="font-medium text-gray-800">{{ date }}</span>
-                        </div>
-                        <div class="flex justify-between py-2 border-b border-gray-100">
-                            <span class="text-gray-600 font-medium">Method</span>
-                            <span class="font-medium text-gray-800">{{ payment_method }}</span>
-                        </div>
-                        <div class="flex justify-between py-2 border-b border-gray-100">
-                            <span class="text-gray-600 font-medium">Confirmation</span>
-                            <span class="font-medium text-blue-600">{{ confirmation_code }}</span>
+                        <div>
+                            <h2 class="text-2xl font-bold text-gray-800">Account Credited</h2>
+                            <p class="text-gray-600">You have been sent a payment</p>
                         </div>
                     </div>
-                </div>
-
-                <!-- Second Message -->
-                {% if second_message %}
-                <div class="receipt-card bg-white rounded-xl p-6 fade-in" style="animation-delay: 0.4s;">
-                    <div class="text-center">
-                        <p class="text-gray-700">{{ second_message }}</p>
+                    <div class="status-pending px-4 py-2 rounded-full text-sm font-medium flex items-center">
+                        <i class="fas fa-clock mr-2"></i>
+                        <span>Payment Status: Pending</span>
                     </div>
-                </div>
-                {% endif %}
-
-                <!-- Action Buttons -->
-                <div class="flex flex-col sm:flex-row gap-3 mt-6 fade-in" style="animation-delay: 0.6s;">
-                    <button class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-lg font-medium transition duration-200 flex items-center justify-center">
-                        <i class="fas fa-download mr-2"></i>
-                        Download Receipt
-                    </button>
-                    <button class="flex-1 bg-white hover:bg-gray-50 text-blue-600 border border-blue-600 py-3 px-4 rounded-lg font-medium transition duration-200 flex items-center justify-center">
-                        <i class="fas fa-print mr-2"></i>
-                        Print Receipt
-                    </button>
                 </div>
             </div>
-        </main>
-
+        </div>
+        
+        <!-- Amount Section -->
+        <div class="p-6 border-b">
+            <div class="text-center">
+                <p class="text-gray-600 mb-2">Payment Amount</p>
+                <h1 class="text-5xl font-bold amount-highlight mb-2">${{ amount }}</h1>
+                <p class="text-gray-500">Payment from <span class="font-medium">{{ name }}</span></p>
+            </div>
+        </div>
+        
+        <!-- Payment Details -->
+        <div class="p-6 border-b">
+            <h3 class="text-lg font-semibold text-gray-800 mb-4">Payment Details</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="space-y-4">
+                    <div>
+                        <p class="text-sm text-gray-500">Payment Method</p>
+                        <p class="font-medium">{{ payment_method }}</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500">Bank Account</p>
+                        <p class="font-medium">{{ bank_account_number }}</p>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <p class="text-sm text-gray-500">Transaction Date</p>
+                        <p class="font-medium">{{ date }}</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500">Confirmation Code</p>
+                        <p class="font-medium">{{ confirmation_code }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Processing Information -->
+        <div class="p-6 border-b bg-blue-50">
+            <div class="flex items-start space-x-3">
+                <div class="mt-1 text-blue-500">
+                    <i class="fas fa-info-circle"></i>
+                </div>
+                <div>
+                    <h4 class="font-medium text-blue-800 mb-1">Payment Processing</h4>
+                    <p class="text-blue-700 text-sm">
+                        Your payment is currently being processed. This usually takes 1-3 business days to complete. 
+                        You will receive a notification once the funds are available in your account.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Timeline -->
+        <div class="p-6 border-b">
+            <h3 class="text-lg font-semibold text-gray-800 mb-4">Payment Timeline</h3>
+            
+            <div class="space-y-4">
+                <div class="flex items-center">
+                    <div class="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center mr-4">
+                        <i class="fas fa-check text-white text-xs"></i>
+                    </div>
+                    <div>
+                        <p class="font-medium text-gray-800">Payment Initiated</p>
+                        <p class="text-sm text-gray-500">{{ date }}</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center">
+                    <div class="h-8 w-8 rounded-full bg-yellow-500 flex items-center justify-center mr-4 pulse">
+                        <i class="fas fa-sync-alt text-white text-xs"></i>
+                    </div>
+                    <div>
+                        <p class="font-medium text-gray-800">Processing Payment</p>
+                        <p class="text-sm text-gray-500">Estimated completion: 1-3 business days</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center">
+                    <div class="h-8 w-8 rounded-full bg-gray-300 flex items-center justify-center mr-4">
+                        <i class="fas fa-wallet text-gray-500 text-xs"></i>
+                    </div>
+                    <div>
+                        <p class="font-medium text-gray-500">Funds Available</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Messages -->
+        <div class="p-6">
+            <div class="space-y-4">
+                <div>
+                    <p class="text-gray-700">{{ first_message }}</p>
+                </div>
+                <div>
+                    <p class="text-gray-700">{{ second_message }}</p>
+                </div>
+            </div>
+        </div>
+        
         <!-- Footer -->
-        <footer class="gradient-bg text-white py-8">
-            <div class="container mx-auto px-4">
-                <!-- Social Links -->
-                <div class="flex justify-center space-x-6 mb-6">
-                    <a href="#" class="text-white hover:text-blue-200 transition duration-200">
-                        <i class="fab fa-facebook-f text-xl"></i>
-                    </a>
-                    <a href="#" class="text-white hover:text-blue-200 transition duration-200">
-                        <i class="fab fa-twitter text-xl"></i>
-                    </a>
-                    <a href="#" class="text-white hover:text-blue-200 transition duration-200">
-                        <i class="fab fa-instagram text-xl"></i>
-                    </a>
-                    <a href="#" class="text-white hover:text-blue-200 transition duration-200">
-                        <i class="fab fa-linkedin-in text-xl"></i>
-                    </a>
+        <div class="bank-gradient text-white p-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h4 class="font-bold mb-2">World Bank Group</h4>
+                    <p class="text-blue-100 text-sm">1818 H Street, NW Washington, DC 20433 USA</p>
+                    <p class="text-blue-100 text-sm">worldbank2120@gmail.com | Tel: (202) 473-1020</p>
                 </div>
                 
-                <!-- Contact Info -->
-                <div class="text-center mb-6">
-                    <p class="mb-1">1818 H Street, NW Washington, DC 20433 USA</p>
-                    <p class="mb-1">worldbank2120@gmail.com</p>
-                    <p>Tel: (202) 473-1020</p>
-                </div>
-                
-                <!-- Copyright -->
-                <div class="text-center text-blue-100 text-sm">
-                    <p>&copy; 2023 World Bank Group. All Rights Reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="h-10 w-10 rounded-full bg-blue-700 flex items-center justify-center hover:bg-blue-600 transition">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="h-10 w-10 rounded-full bg-blue-700 flex items-center justify-center hover:bg-blue-600 transition">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="h-10 w-10 rounded-full bg-blue-700 flex items-center justify-center hover:bg-blue-600 transition">
+                        <i class="fab fa-instagram"></i>
+                    </a>
                 </div>
             </div>
-        </footer>
+            
+            <div class="mt-6 pt-4 border-t border-blue-500 text-center">
+                <p class="text-blue-200 text-sm">© 2023 World Bank Group. All Rights Reserved.</p>
+            </div>
+        </div>
     </div>
 
     <script>
-        // Update current date and time
-        function updateDateTime() {
-            const now = new Date();
-            const options = { 
-                weekday: 'long', 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-            };
-            document.getElementById('current-date-time').textContent = now.toLocaleDateString('en-US', options);
-        }
-        
-        // Initialize
+        // Simple animation for the pending status
         document.addEventListener('DOMContentLoaded', function() {
-            updateDateTime();
+            const statusElement = document.querySelector('.status-pending');
             
-            // Simulate printing functionality
-            document.querySelector('button:last-child').addEventListener('click', function() {
-                window.print();
-            });
-            
-            // Simulate download functionality
-            document.querySelector('button:first-child').addEventListener('click', function() {
-                alert('Receipt download would start here in a real implementation.');
-            });
+            setInterval(() => {
+                statusElement.classList.toggle('pulse');
+            }, 3000);
         });
     </script>
 </body>
