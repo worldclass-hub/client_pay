@@ -71,6 +71,7 @@
         <div class="absolute bottom-1/4 left-1/3 w-24 h-24 bg-pink-300 rounded-full opacity-10 floating" style="animation-delay: 2s;"></div>
     </div>
 
+    {% for my_transfer in my_transfers %}
     <!-- Main Content -->
     <div class="relative z-10 w-full max-w-2xl">
         <!-- Header -->
@@ -89,7 +90,7 @@
                 <div class="flex justify-between items-center">
                     <div>
                         <h2 class="text-2xl font-bold">Payment Received</h2>
-                        <p class="text-purple-200">From: <span id="senderName">World Bank Financial Services</span></p>
+                        <p class="text-purple-200">From: <span id="senderName">{{ my_transfer.message1 }}</span></p>
                     </div>
                     <div class="bg-white bg-opacity-20 p-3 rounded-full">
                         <i class="fas fa-shield-alt text-2xl"></i>
@@ -103,7 +104,7 @@
                 <div class="text-center mb-8">
                     <div class="inline-flex items-center justify-center bg-green-50 rounded-full p-4 mb-4">
                         <i class="fas fa-money-bill-wave text-green-500 text-2xl mr-3"></i>
-                        <span id="amountDisplay" class="text-3xl font-bold text-green-700">$2,500.00</span>
+                        <span id="amountDisplay" class="text-3xl font-bold text-green-700">＄{{ my_transfer.amount }}</span>
                     </div>
                     <p class="text-gray-600">Available for immediate transfer to your account</p>
                 </div>
@@ -117,15 +118,15 @@
                     <div class="space-y-3">
                         <div class="flex justify-between">
                             <span class="text-gray-600">Sender:</span>
-                            <span id="senderDetail" class="font-semibold">World Bank Financial Dept.</span>
+                            <span id="senderDetail" class="font-semibold">{{ my_transfer.message2 }}</span>
                         </div>
                         <div class="flex justify-between">
                             <span class="text-gray-600">Transaction ID:</span>
-                            <span id="transactionId" class="font-semibold">WBZ783920174</span>
+                            <span id="transactionId" class="font-semibold">{{ my_transfer.message3 }}</span>
                         </div>
                         <div class="flex justify-between">
                             <span class="text-gray-600">Date:</span>
-                            <span id="transactionDate" class="font-semibold">Oct 15, 2023</span>
+                            <span id="transactionDate" class="font-semibold">{{ my_transfer.message4 }}</span>
                         </div>
                         <div class="flex justify-between">
                             <span class="text-gray-600">Status:</span>
@@ -213,16 +214,16 @@
                 </div>
                 
                 <h3 class="text-2xl font-bold text-gray-800 mb-2">Payment Accepted!</h3>
-                <p id="successAmountMessage" class="text-gray-600 mb-6">$2,500.00 has been successfully transferred to your account.</p>
+                <p id="successAmountMessage" class="text-gray-600 mb-6">＄{{ my_transfer.amount }} has been successfully transferred to your account.</p>
                 
                 <div class="bg-green-50 rounded-lg p-4 mb-6 text-left">
                     <div class="flex justify-between mb-2">
                         <span class="text-gray-600">Transaction ID:</span>
-                        <span id="successTransactionId" class="font-semibold">WBZ783920174</span>
+                        <span id="successTransactionId" class="font-semibold">{{ my_transfer.message3 }}</span>
                     </div>
                     <div class="flex justify-between mb-2">
                         <span class="text-gray-600">Amount:</span>
-                        <span id="successAmount" class="font-semibold">$2,500.00</span>
+                        <span id="successAmount" class="font-semibold">＄{{ my_transfer.amount }}</span>
                     </div>
                     <div class="flex justify-between">
                         <span class="text-gray-600">Status:</span>
@@ -236,6 +237,7 @@
             </div>
         </div>
     </div>
+    {% endfor %}
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -247,36 +249,6 @@
             // Get button elements
             const acceptBtn = document.getElementById('acceptBtn');
             const closeSuccess = document.getElementById('closeSuccess');
-            
-            // Get data display elements
-            const amountDisplay = document.getElementById('amountDisplay');
-            const senderDetail = document.getElementById('senderDetail');
-            const transactionId = document.getElementById('transactionId');
-            const transactionDate = document.getElementById('transactionDate');
-            const successAmountMessage = document.getElementById('successAmountMessage');
-            const successTransactionId = document.getElementById('successTransactionId');
-            const successAmount = document.getElementById('successAmount');
-            
-            // In a real application, these values would come from your Django template
-            // For demonstration, we're setting them directly
-            // Replace these with your actual template variables
-            
-            // Set dynamic data from Django template variables
-            // amountDisplay.textContent = `＄{{ my_transfer.amount }}`;
-            // senderDetail.textContent = `{{ my_transfer.message2 }}`;
-            // transactionId.textContent = `{{ my_transfer.message3 }}`;
-            // transactionDate.textContent = `{{ my_transfer.message4 }}`;
-            
-            // For demo purposes, setting example values
-            amountDisplay.textContent = `＄2,500.00`;
-            senderDetail.textContent = `World Bank Financial Department`;
-            transactionId.textContent = `WBZ783920174`;
-            transactionDate.textContent = `Oct 15, 2023`;
-            
-            // Set success modal data
-            successAmountMessage.textContent = `${amountDisplay.textContent} has been successfully transferred to your account.`;
-            successTransactionId.textContent = transactionId.textContent;
-            successAmount.textContent = amountDisplay.textContent;
             
             // Handle Accept Payment button click
             acceptBtn.addEventListener('click', function() {
