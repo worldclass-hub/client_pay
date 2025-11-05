@@ -39,7 +39,7 @@ ALLOWED_HOSTS = ["*"]
 
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://emilia-school-report-card-maker.onrender.com',
+    'https://client-pay-dpro.onrender.com',
     'http://127.0.0.1:8000',
 ]
 
