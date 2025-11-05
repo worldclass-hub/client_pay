@@ -8,10 +8,10 @@ JAZZMIN_SETTINGS = {
     "site_title": "Ecommerce Admin",
 
     # Title on the login screen (19 chars max)
-    "site_header": "GMMI",
+    "site_header": "Client",
 
     # Title on the brand (19 chars max)
-    "site_brand": "GMMI",
+    "site_brand": "client",
 
     # Logo to use for your site, must be present in static files
     "site_logo": "/img/GMMI_LOGO.png",
@@ -32,11 +32,11 @@ JAZZMIN_SETTINGS = {
     "site_logo_classes": "img-circle",
 
     # Welcome text on the login screen
-    "welcome_sign": "Welcome to the GMMI",
+    "welcome_sign": "Welcome to the client Pay",
     
 
     # Copyright on the footer
-    "copyright": "GMMI Coorperation",
+    "copyright": "Client Coorperation",
     
     
     
