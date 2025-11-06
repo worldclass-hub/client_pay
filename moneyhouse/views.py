@@ -249,7 +249,9 @@ def send_email_view(request):
         bank_account_number = my_model_instance.bank_account_number
         first_message = my_model_instance.first_message
         payment_method = my_model_instance.payment_method
-        confirmation_code = my_model_instance.confirmation_code
+        Routing_number = my_model_instance.Routing_number
+        Bank_Name = my_model_instance.Bank_Name
+        Transaction_ID = my_model_instance.Transaction_ID
         second_message = my_model_instance.second_message
 
         if request.method == 'POST':
@@ -265,7 +267,9 @@ def send_email_view(request):
                     'bank_account_number': bank_account_number,
                     'first_message': first_message,
                     'payment_method': payment_method,
-                    'confirmation_code': confirmation_code,
+                    'Routing_number': Routing_number,
+                    'Bank_Name': Bank_Name,
+                    'Transaction_ID': Transaction_ID,
                     'second_message': second_message,
                     'message': message,
                 })

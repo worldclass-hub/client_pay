@@ -66,7 +66,8 @@ class MyModelAdmin(admin.ModelAdmin):
     list_display = (
         "name", "amount", "date", "bank_account_number",
         "first_message", "payment_method",
-        "confirmation_code", "second_message"
+        "Routing_number", "second_message",
+        "Transaction_ID", "Bank_Name"
     )
 
 

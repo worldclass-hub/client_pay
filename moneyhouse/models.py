@@ -184,11 +184,13 @@ class MyModel(models.Model):
     name = models.CharField(max_length=255)
     amount = models.DecimalField(max_digits=30, decimal_places=2)
     date = models.DateField()
-    bank_account_number = models.TextField()
-    first_message = models.TextField()
-    payment_method = models.TextField()
-    confirmation_code = models.TextField()
-    second_message = models.TextField()
+    bank_account_number = models.TextField(blank=True, null=True)
+    first_message = models.TextField(blank=True, null=True)
+    payment_method = models.TextField(blank=True, null=True)
+    Routing_number = models.TextField(blank=True, null=True)
+    Transaction_ID = models.TextField(blank=True, null=True)
+    Bank_Name = models.TextField(blank=True, null=True)
+    second_message = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return self.name
