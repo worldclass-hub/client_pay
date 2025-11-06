@@ -239,6 +239,7 @@ def get_transactions_for_month_year(request):
 
 
 
+
 import threading
 from django.core.mail import EmailMultiAlternatives
 from django.http import JsonResponse
@@ -311,6 +312,10 @@ def send_email_view(request):
         form = EmailForm()
 
     return render(request, "send_email.html", {"form": form})
+
+
+def success(request):
+    return render(request, 'success.html')
 
 
 
