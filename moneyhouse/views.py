@@ -240,46 +240,78 @@ def get_transactions_for_month_year(request):
 
 
 
-def send_email_view(request):
-    my_model_instance = MyModel.objects.first()  # Retrieve the first instance from the database
-    if my_model_instance:
-        name = my_model_instance.name
-        amount = my_model_instance.amount
-        date = my_model_instance.date
-        bank_account_number = my_model_instance.bank_account_number
-        first_message = my_model_instance.first_message
-        payment_method = my_model_instance.payment_method
-        Routing_number = my_model_instance.Routing_number
-        Bank_Name = my_model_instance.Bank_Name
-        Transaction_ID = my_model_instance.Transaction_ID
-        second_message = my_model_instance.second_message
+import threading
+from django.core.mail import EmailMultiAlternatives
+from django.http import JsonResponse
+from django.shortcuts import render, redirect
+from django.conf import settings
+from django.template.loader import render_to_string
+from django.utils import timezone
+import smtplib
 
-        if request.method == 'POST':
-            form = EmailForm(request.POST)
-            if form.is_valid():
-                subject = form.cleaned_data['subject']
-                message = form.cleaned_data['message']
-                recipients = form.cleaned_data['recipients'].split(',')
-                html_message = render_to_string('client_template.html', {
-                    'name': name,
-                    'amount': amount,
-                    'date': date,
-                    'bank_account_number': bank_account_number,
-                    'first_message': first_message,
-                    'payment_method': payment_method,
-                    'Routing_number': Routing_number,
-                    'Bank_Name': Bank_Name,
-                    'Transaction_ID': Transaction_ID,
-                    'second_message': second_message,
-                    'message': message,
-                })
-                send_mail(subject, '', 'World Bank <' + settings.EMAIL_HOST_USER + '>', recipients, html_message=html_message, fail_silently=False)
-                return redirect('success')
-        else:
-            form = EmailForm()
-        return render(request, 'send_email.html', {'form': form})
-    else:
+
+def send_email_thread(subject, recipients, html_message):
+    """Runs email sending in background to avoid blocking Render workers."""
+    try:
+        msg = EmailMultiAlternatives(
+            subject=subject,
+            body="Your email client does not support HTML.",
+            from_email=f"World Bank <{settings.EMAIL_HOST_USER}>",
+            to=recipients,
+        )
+        msg.attach_alternative(html_message, "text/html")
+
+        # Hard timeout for Gmail SMTP
+        msg.send(fail_silently=False)
+
+    except smtplib.SMTPException as e:
+        print("SMTP error:", e)
+    except Exception as e:
+        print("Email sending failed:", e)
+
+
+def send_email_view(request):
+    my_model_instance = MyModel.objects.first()
+
+    if not my_model_instance:
         return HttpResponse("No MyModel instances found.")
+
+    data = {
+        "name": my_model_instance.name,
+        "amount": my_model_instance.amount,
+        "date": my_model_instance.date,
+        "bank_account_number": my_model_instance.bank_account_number,
+        "first_message": my_model_instance.first_message,
+        "payment_method": my_model_instance.payment_method,
+        "Routing_number": my_model_instance.Routing_number,
+        "Bank_Name": my_model_instance.Bank_Name,
+        "Transaction_ID": my_model_instance.Transaction_ID,
+        "second_message": my_model_instance.second_message,
+    }
+
+    if request.method == 'POST':
+        form = EmailForm(request.POST)
+        if form.is_valid():
+            subject = form.cleaned_data["subject"]
+            message = form.cleaned_data["message"]
+            recipients = form.cleaned_data["recipients"].split(",")
+
+            html_message = render_to_string("client_template.html", {
+                **data,
+                "message": message,
+            })
+
+            # ✅ Run email sending in a background thread
+            threading.Thread(
+                target=send_email_thread,
+                args=(subject, recipients, html_message)
+            ).start()
+
+            return redirect("success")
+    else:
+        form = EmailForm()
+
+    return render(request, "send_email.html", {"form": form})
 
 
 def success(request):
