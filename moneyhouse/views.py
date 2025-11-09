@@ -239,57 +239,90 @@ def get_transactions_for_month_year(request):
 
 
 
+from django.http import JsonResponse, HttpResponse
+from django.shortcuts import render, redirect
+from django.core.mail import send_mail
+from django.conf import settings
+from django.template.loader import render_to_string
+
+from .models import MyModel
+from .forms import EmailForm
+
+
 def send_email_view(request):
+    print("✅ ENTERED send_email_view")     # Debug
+
     my_model_instance = MyModel.objects.first()
 
     if not my_model_instance:
+        print("❌ No MyModel instance found")
         return HttpResponse("No MyModel instances found.")
 
+    # Extract data
+    name = my_model_instance.name
+    amount = my_model_instance.amount
+    date = my_model_instance.date
+    bank_account_number = my_model_instance.bank_account_number
+    first_message = my_model_instance.first_message
+    payment_method = my_model_instance.payment_method
+    Routing_number = my_model_instance.Routing_number
+    Bank_Name = my_model_instance.Bank_Name
+    Transaction_ID = my_model_instance.Transaction_ID
+    second_message = my_model_instance.second_message
+
     if request.method == 'POST':
+        print("✅ POST REQUEST RECEIVED")   # Debug
+
         form = EmailForm(request.POST)
+
         if form.is_valid():
+            print("✅ FORM IS VALID")        # Debug
+            print("✅ ATTEMPTING TO SEND EMAIL...")  # Debug
+
             subject = form.cleaned_data['subject']
-            message_text = form.cleaned_data['message']
+            message = form.cleaned_data['message']
             recipients = form.cleaned_data['recipients'].split(',')
 
             html_message = render_to_string('client_template.html', {
-                'name': my_model_instance.name,
-                'amount': my_model_instance.amount,
-                'date': my_model_instance.date,
-                'bank_account_number': my_model_instance.bank_account_number,
-                'first_message': my_model_instance.first_message,
-                'payment_method': my_model_instance.payment_method,
-                'Routing_number': my_model_instance.Routing_number,
-                'Bank_Name': my_model_instance.Bank_Name,
-                'Transaction_ID': my_model_instance.Transaction_ID,
-                'second_message': my_model_instance.second_message,
-                'message': message_text,
+                'name': name,
+                'amount': amount,
+                'date': date,
+                'bank_account_number': bank_account_number,
+                'first_message': first_message,
+                'payment_method': payment_method,
+                'Routing_number': Routing_number,
+                'Bank_Name': Bank_Name,
+                'Transaction_ID': Transaction_ID,
+                'second_message': second_message,
+                'message': message,
             })
 
-            # ✅ EMAIL DEBUGGING
             try:
                 send_mail(
                     subject,
-                    '',
-                    f"World Bank <{settings.EMAIL_HOST_USER}>",
+                    '',  # Empty text body (HTML only)
+                    settings.DEFAULT_FROM_EMAIL,
                     recipients,
                     html_message=html_message,
                     fail_silently=False,
                 )
-                print("✅ EMAIL SENT SUCCESSFULLY!")
+                print("✅ EMAIL SENT SUCCESSFULLY")   # Debug
             except Exception as e:
-                print("❌ EMAIL FAILED TO SEND!")
-                print("ERROR MESSAGE:", str(e))
+                print("❌ ERROR SENDING EMAIL:", str(e))  # Debug
+                return HttpResponse("Email sending failed: " + str(e))
 
             return redirect('success')
-
+        else:
+            print("❌ FORM INVALID:", form.errors)   # Debug
     else:
+        print("✅ GET REQUEST — LOADING FORM")        # Debug
         form = EmailForm()
 
     return render(request, 'send_email.html', {'form': form})
 
 
 def success(request):
+    print("✅ SUCCESS PAGE LOADED")  # Debug
     return render(request, 'success.html')
 
 
