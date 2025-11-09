@@ -1,62 +1,306 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
-<title>Email Sent Successfully</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        text-align: center;
-        background-color: #fff;
-    }
-    .container {
-        max-width: 600px;
-        margin: 50px auto;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 5px;
-    }
-    .success-image {
-        max-width: 50%;
-        margin-left: 6px;
-        height: 50%;
-    }
-
-    .success-image1 {
-        max-width: 35%;
-        margin-left: -1px;
-        margin-top: 120px;
-        height: 35%;
-    }
-
-    .message {
-        margin-top: 100px;
-        font-size: 24px;
-        color: #333;
-    }
-    .button {
-        display: inline-block;
-        margin-top: 50px;
-        padding: 10px 60px;
-        background-color: #4CAF50;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 5px;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Sent Successfully</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        success: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        }
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulse-glow 2s ease-in-out infinite alternate',
+                        'bounce-subtle': 'bounce-subtle 2s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        'pulse-glow': {
+                            '0%': { boxShadow: '0 0 5px rgba(34, 197, 94, 0.5)' },
+                            '100%': { boxShadow: '0 0 20px rgba(34, 197, 94, 0.8)' },
+                        },
+                        'bounce-subtle': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-5px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .floating-home-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 50;
+            transition: all 0.3s ease;
+        }
+        
+        .floating-home-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f0f;
+            opacity: 0.7;
+        }
+        
+        .success-checkmark {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .check-icon {
+            width: 80px;
+            height: 80px;
+            position: relative;
+            border-radius: 50%;
+            box-sizing: content-box;
+            border: 4px solid #22c55e;
+        }
+        
+        .check-icon::before {
+            top: 3px;
+            left: -2px;
+            width: 30px;
+            transform-origin: 100% 50%;
+            border-radius: 100px 0 0 100px;
+        }
+        
+        .check-icon::after {
+            top: 0;
+            left: 30px;
+            width: 60px;
+            transform-origin: 0 50%;
+            border-radius: 0 100px 100px 0;
+            animation: rotate-circle 4.25s ease-in;
+        }
+        
+        .check-icon::before, .check-icon::after {
+            content: '';
+            height: 100px;
+            position: absolute;
+            background: #ffffff;
+            transform: rotate(-45deg);
+        }
+        
+        .icon-line {
+            height: 5px;
+            background-color: #22c55e;
+            display: block;
+            border-radius: 2px;
+            position: absolute;
+            z-index: 10;
+        }
+        
+        .icon-line.line-tip {
+            top: 46px;
+            left: 14px;
+            width: 25px;
+            transform: rotate(45deg);
+            animation: icon-line-tip 0.75s;
+        }
+        
+        .icon-line.line-long {
+            top: 38px;
+            right: 8px;
+            width: 47px;
+            transform: rotate(-45deg);
+            animation: icon-line-long 0.75s;
+        }
+        
+        @keyframes rotate-circle {
+            0% { transform: rotate(-45deg); }
+            5% { transform: rotate(-45deg); }
+            12% { transform: rotate(-405deg); }
+            100% { transform: rotate(-405deg); }
+        }
+        
+        @keyframes icon-line-tip {
+            0% { width: 0; left: 1px; top: 19px; }
+            54% { width: 0; left: 1px; top: 19px; }
+            70% { width: 50px; left: -8px; top: 37px; }
+            84% { width: 17px; left: 21px; top: 48px; }
+            100% { width: 25px; left: 14px; top: 45px; }
+        }
+        
+        @keyframes icon-line-long {
+            0% { width: 0; right: 46px; top: 54px; }
+            65% { width: 0; right: 46px; top: 54px; }
+            84% { width: 55px; right: 0px; top: 35px; }
+            100% { width: 47px; right: 8px; top: 38px; }
+        }
+        
+        /* Mobile-specific adjustments */
+        @media (max-width: 768px) {
+            .floating-home-btn {
+                bottom: 5rem; /* Moved up for mobile */
+                right: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .floating-home-btn {
+                bottom: 4rem; /* Moved up further for small mobile */
+                right: 1rem;
+            }
+        }
+    </style>
 </head>
-<body>
-<div class="container">
-    <img src="https://i.postimg.cc/52rNBsWm/mailsent.png" alt="Success Image" class="success-image1 w3-hide-medium w3-hide-large">
+<body class="font-poppins">
+    <!-- Background Elements -->
+    <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div class="absolute -top-20 -left-20 w-60 h-60 bg-primary-200 rounded-full opacity-30 blur-xl"></div>
+        <div class="absolute top-1/3 -right-20 w-80 h-80 bg-success-200 rounded-full opacity-20 blur-xl"></div>
+        <div class="absolute bottom-20 left-1/4 w-40 h-40 bg-primary-300 rounded-full opacity-20 blur-xl"></div>
+    </div>
 
-    <img src="https://i.postimg.cc/52rNBsWm/mailsent.png" alt="Success Image" class="success-image w3-hide-small">
+    <!-- Main Content -->
+    <div class="relative min-h-screen flex flex-col justify-center items-center px-4 py-12">
+        <div class="max-w-2xl w-full bg-white/80 backdrop-blur-lg rounded-3xl shadow-2xl p-8 md:p-12 transform transition-all duration-500 hover:shadow-xl border border-white/50">
+            <!-- Success Animation -->
+            <div class="flex justify-center mb-8">
+                <div class="success-checkmark">
+                    <div class="check-icon">
+                        <span class="icon-line line-tip"></span>
+                        <span class="icon-line line-long"></span>
+                        <div class="icon-circle"></div>
+                        <div class="icon-fix"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Success Message -->
+            <div class="text-center mb-10">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Email Sent Successfully!</h1>
+                <p class="text-lg md:text-xl text-gray-600 max-w-lg mx-auto">
+                    Your message has been delivered successfully. We'll get back to you as soon as possible.
+                </p>
+            </div>
+            
+            <!-- Stats Section -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                <div class="bg-gradient-to-br from-primary-50 to-primary-100 p-6 rounded-2xl text-center border border-primary-200">
+                    <div class="text-3xl font-bold text-primary-700 mb-2">100%</div>
+                    <div class="text-primary-600 font-medium">Delivery Rate</div>
+                </div>
+                <div class="bg-gradient-to-br from-success-50 to-success-100 p-6 rounded-2xl text-center border border-success-200">
+                    <div class="text-3xl font-bold text-success-700 mb-2">< 1 min</div>
+                    <div class="text-success-600 font-medium">Delivery Time</div>
+                </div>
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-2xl text-center border border-purple-200">
+                    <div class="text-3xl font-bold text-purple-700 mb-2">24/7</div>
+                    <div class="text-purple-600 font-medium">Support</div>
+                </div>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="{% url 'base' %}" class="px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                    <i class="fas fa-home"></i>
+                    Go to Homepage
+                </a>
+                <a href="{% url 'send_email' %}" class="px-8 py-4 bg-gradient-to-r from-gray-700 to-gray-800 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                    <i class="fas fa-envelope"></i>
+                    Send Another Email
+                </a>
+            </div>
+            
+            <!-- Additional Info -->
+            <div class="mt-10 pt-8 border-t border-gray-200 text-center">
+                <p class="text-gray-500 mb-2">Need immediate assistance?</p>
+                <a href="#" class="text-primary-600 font-medium hover:text-primary-700 transition-colors duration-300 flex items-center justify-center gap-1">
+                    <i class="fas fa-phone-alt"></i>
+                    Contact our support team
+                </a>
+            </div>
+        </div>
+        
+        <!-- Floating Home Button -->
+        <div class="floating-home-btn">
+            <a href="{% url 'base' %}" class="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center bg-gradient-to-br from-primary-500 to-primary-600 text-white rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 animate-bounce-subtle">
+                <i class="fas fa-home text-xl"></i>
+            </a>
+        </div>
+    </div>
 
-    <div class="message">Email sent successfully</div>
-    <a href="{% url 'base' %}" class="button">Go Home</a>
-</div>
+    <!-- Confetti Effect -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create confetti
+            const colors = ['#0ea5e9', '#22c55e', '#f59e0b', '#ef4444', '#8b5cf6'];
+            const confettiCount = 100;
+            const container = document.body;
+            
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = Math.random() * 100 + 'vh';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.width = Math.random() * 10 + 5 + 'px';
+                confetti.style.height = Math.random() * 10 + 5 + 'px';
+                confetti.style.opacity = Math.random() * 0.5 + 0.3;
+                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                container.appendChild(confetti);
+            }
+            
+            // Animate confetti
+            const confettiElements = document.querySelectorAll('.confetti');
+            confettiElements.forEach(el => {
+                const duration = Math.random() * 3 + 2;
+                el.style.animation = `float ${duration}s ease-in-out infinite`;
+                el.style.animationDelay = Math.random() * 2 + 's';
+            });
+        });
+    </script>
 </body>
 </html>
