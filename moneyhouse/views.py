@@ -250,7 +250,7 @@ from .forms import EmailForm
 
 
 def send_email_view(request):
-    print("✅ ENTERED send_email_view")     # Debug
+    print("✅ ENTERED send_email_view")  # Debug
 
     my_model_instance = MyModel.objects.first()
 
@@ -271,13 +271,13 @@ def send_email_view(request):
     second_message = my_model_instance.second_message
 
     if request.method == 'POST':
-        print("✅ POST REQUEST RECEIVED")   # Debug
+        print("✅ POST REQUEST RECEIVED")  # Debug
 
         form = EmailForm(request.POST)
 
         if form.is_valid():
-            print("✅ FORM IS VALID")        # Debug
-            print("✅ ATTEMPTING TO SEND EMAIL...")  # Debug
+            print("✅ FORM IS VALID")
+            print("✅ ATTEMPTING TO SEND EMAIL...")
 
             subject = form.cleaned_data['subject']
             message = form.cleaned_data['message']
@@ -300,29 +300,32 @@ def send_email_view(request):
             try:
                 send_mail(
                     subject,
-                    '',  # Empty text body (HTML only)
-                    settings.DEFAULT_FROM_EMAIL,
+                    '',  # No plain text
+                    settings.DEFAULT_FROM_EMAIL,  # ✅ Resend sender
                     recipients,
                     html_message=html_message,
                     fail_silently=False,
                 )
-                print("✅ EMAIL SENT SUCCESSFULLY")   # Debug
+                print("✅ EMAIL SENT SUCCESSFULLY")
+
             except Exception as e:
-                print("❌ ERROR SENDING EMAIL:", str(e))  # Debug
+                print("❌ ERROR SENDING EMAIL:", str(e))
                 return HttpResponse("Email sending failed: " + str(e))
 
             return redirect('success')
+
         else:
-            print("❌ FORM INVALID:", form.errors)   # Debug
+            print("❌ FORM INVALID:", form.errors)
+
     else:
-        print("✅ GET REQUEST — LOADING FORM")        # Debug
+        print("✅ GET REQUEST — LOADING FORM")
         form = EmailForm()
 
     return render(request, 'send_email.html', {'form': form})
 
 
 def success(request):
-    print("✅ SUCCESS PAGE LOADED")  # Debug
+    print("✅ SUCCESS PAGE LOADED")
     return render(request, 'success.html')
 
 
