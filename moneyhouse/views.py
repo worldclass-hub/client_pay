@@ -238,15 +238,32 @@ def get_transactions_for_month_year(request):
     return JsonResponse({'error': 'Invalid request method'}, status=400)
 
 
-
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.conf import settings
 from django.template.loader import render_to_string
+import threading  # ✅ ADD THIS
 
 from .models import MyModel
 from .forms import EmailForm
+
+
+# ✅ ADD THIS ASYNC FUNCTION
+def send_async_email(subject, html_message, recipients):
+    try:
+        print("🎯 ASYNC EMAIL SENDING STARTED...")
+        send_mail(
+            subject,
+            '',  # No plain text
+            settings.DEFAULT_FROM_EMAIL,
+            recipients,
+            html_message=html_message,
+            fail_silently=False,
+        )
+        print("✅ EMAIL SENT SUCCESSFULLY")
+    except Exception as e:
+        print("❌ ERROR SENDING EMAIL:", str(e))
 
 
 def send_email_view(request):
@@ -283,6 +300,10 @@ def send_email_view(request):
             message = form.cleaned_data['message']
             recipients = form.cleaned_data['recipients'].split(',')
 
+            # ✅ ADD DEBUG INFO
+            print(f"📧 Sending to: {recipients}")
+            print(f"📧 Subject: {subject}")
+
             html_message = render_to_string('client_template.html', {
                 'name': name,
                 'amount': amount,
@@ -297,21 +318,14 @@ def send_email_view(request):
                 'message': message,
             })
 
-            try:
-                send_mail(
-                    subject,
-                    '',  # No plain text
-                    settings.DEFAULT_FROM_EMAIL,  # ✅ Resend sender
-                    recipients,
-                    html_message=html_message,
-                    fail_silently=False,
-                )
-                print("✅ EMAIL SENT SUCCESSFULLY")
-
-            except Exception as e:
-                print("❌ ERROR SENDING EMAIL:", str(e))
-                return HttpResponse("Email sending failed: " + str(e))
-
+            # ✅ USE THREADING INSTEAD OF DIRECT SEND
+            email_thread = threading.Thread(
+                target=send_async_email,
+                args=(subject, html_message, recipients)
+            )
+            email_thread.start()
+            
+            print("✅ EMAIL THREAD STARTED - REDIRECTING USER")
             return redirect('success')
 
         else:
